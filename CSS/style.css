@@ -20,9 +20,10 @@ body{
 }
 .MainCount{
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 20px;
     width: 80%;
     height: 100%;
+    box-shadow: 10px 10px 7px black;
 }
 .QuizTable{
     width: 100%;
@@ -34,26 +35,18 @@ background-color: white;
     width: 100%;
     height: 100%;
     min-height: 100px;
-    position: relative;
 }
-.QuizTitleTitleText{
-   margin: 40px;
-   
-   }
+
 .QuizTitleText{
     padding: 20px;
 text-align: center;
 font-size: 25px;
 }
 .QuizDifficult{
-    position: absolute;
-    right: 15px;
-    top: 15px;
+   font-size: 20px;
 }
 .Quiztype{
-    position: absolute;
-    right: 15px;
-    top: 35px;
+    font-size: 20px;
 }
 .Questions{
     width: 100%;
@@ -62,16 +55,8 @@ font-size: 25px;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-   
 }
-.Score{
-    position: absolute;
-    right: 20px;
-    top: 55px;
-    display: flex;
-    gap: 10px
-}
-.Questions button{
+.Answer{
     margin: 10px;
    width: 90%;
    height: 100%;
@@ -81,4 +66,69 @@ font-size: 25px;
 }
 .Questions button:hover{
     background-color: gray;
+}
+.DivCheckAndTry{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    height: 100%;
+    min-height: 80px;
+    
+    
+}
+.DivCheckAndTry button{
+width: 40%;
+min-height: 40px;
+}
+.Answer{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.selected{
+    border: 2px solid purple;
+    background-color: rgb(179, 2, 179);
+}
+.CorrectAsnwer{
+    font-size: 500px;
+    color: black;
+  position: absolute;
+}
+.QuizTitleTitleText{
+    font-size: 45px;
+}
+.countent{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+}
+.ResultsTextCorrect{
+    padding-left: 5%;
+    color: green;
+    font-size: 20px;
+}
+.ResultsTextIncorrect{
+    padding-left: 5%;
+    color: red;
+    font-size: 20px;
+}
+.QuestionCorrect{
+    padding-left: 5%;
+    padding-top: 10px;
+    font-size: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: purple;
+}
+.SelectionOptionAtencion{
+    padding-left: 5%;
+    color: red;
+    font-size: 20px;
+}
+#Btnretry{
+    display: none;
 }
