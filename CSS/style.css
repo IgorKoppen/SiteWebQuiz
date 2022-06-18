@@ -1,73 +1,111 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
     margin: 0;
     padding: 0;
 }
 
-.Nav{
+:root {
+    --nav-color: #3D3A4B;
+    --main-color: #D3C0CD;
+    --second-color: #E3DFFF;
+    --Quizmain-color: #660066;
+    --Quizsecond-color: #d580ff;
+    --QuizHouver-color: #eabfff;
+}
+
+
+
+.Nav {
     display: flex;
     align-items: center;
-    background: gray;
+    background: var(--nav-color);
     width: 100%;
     height: 5rem;
 }
-.Nav h1{
+
+.Nav h1 {
     padding: 10px;
 }
-body{
+
+body {
     width: 100%;
     height: 100%;
-    background: rgb(124, 80, 124);
+    background: var(--second-color);
 }
-.MainCount{
+
+.MainCount {
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 40px;
     width: 80%;
     height: 100%;
-    box-shadow: 10px 10px 7px black;
+
 }
-.QuizTable{
+
+.QuizTable {
     width: 100%;
     height: 100%;
-    min-height: 600px;
-background-color: white;
+    min-height: 650px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    padding: 2%;
+    font-family: 'Poppins', sans-serif;
 }
-.QuizTitle{
+.QuizTitle {
     width: 100%;
     height: 100%;
     min-height: 100px;
 }
 
-.QuizTitleText{
+.QuizTitleText {
     padding: 20px;
-text-align: center;
-font-size: 25px;
+    text-align: center;
+    font-size: 27px;
 }
-.QuizDifficult{
-   font-size: 20px;
+
+.QuizDifficult {
+    font-size: 22px;
 }
-.Quiztype{
-    font-size: 20px;
+
+.Quiztype {
+    font-size: 22px;
 }
-.Questions{
+
+.Questions {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+
 }
-.Answer{
+
+.Answer {
     margin: 10px;
-   width: 90%;
-   height: 100%;
-   min-height: 60px;
-   border: 2px solid palevioletred;
-   background-color: white;
+    width: 90%;
+    height: 100%;
+    min-height: 60px;
+    border: 2px solid var(--Quizmain-color);
+    background-color: white;
 }
-.Questions button:hover{
-    background-color: gray;
+
+.Questions button {
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    transition: 500ms ease;
+    font-size: 22px;
 }
-.DivCheckAndTry{
+
+.Questions button:hover {
+    border: 2px solid var(--Quizsecond-color);
+    background-color: var(--QuizHouver-color);
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+}
+
+.DivCheckAndTry {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,60 +113,94 @@ font-size: 25px;
     width: 100%;
     height: 100%;
     min-height: 80px;
-    
-    
+    padding-top: 40px;
+
+
 }
-.DivCheckAndTry button{
-width: 40%;
-min-height: 40px;
+
+.DivCheckAndTry button {
+    width: 40%;
+    min-height: 40px;
 }
-.Answer{
+
+.Answer {
     display: flex;
     align-items: center;
     padding: 10px;
     font-size: 15px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.selected{
-    border: 2px solid purple;
-    background-color: rgb(179, 2, 179);
+
+.selected {
+    border: 2px solid var(--Quizsecond-color);
+    background-color: var(--QuizHouver-color);
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
 }
-.CorrectAsnwer{
-    font-size: 500px;
-    color: black;
-  position: absolute;
+.QuizTitleTitleText {
+    font-size: 50px;
 }
-.QuizTitleTitleText{
-    font-size: 45px;
-}
-.countent{
+
+.countent {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 30px;
 }
-.ResultsTextCorrect{
+
+.ResultsTextCorrect {
     padding-left: 5%;
     color: green;
     font-size: 20px;
 }
-.ResultsTextIncorrect{
+
+.ResultsTextIncorrect {
     padding-left: 5%;
     color: red;
     font-size: 20px;
 }
-.QuestionCorrect{
+
+.QuestionCorrect {
     padding-left: 5%;
     padding-top: 10px;
     font-size: 20px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: purple;
+    color: var(--Quizmain-color);
 }
-.SelectionOptionAtencion{
+
+.SelectionOptionAtencion {
     padding-left: 5%;
     color: red;
     font-size: 20px;
 }
-#Btnretry{
+
+#Btnretry {
     display: none;
+    border: 2px solid var(--Quizmain-color);
+    background-color: var(--QuizHouver-color);
+    transition: 500ms ease;
+    min-height: 60px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#Btnretry:hover {
+    background-color: var(--Quizmain-color);
+    color: white;
+}
+
+#BtnCheck {
+    border: 2px solid var(--Quizmain-color);
+    background-color: var(--QuizHouver-color);
+    transition: 500ms ease;
+    min-height: 60PX;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#BtnCheck:hover {
+    background-color: var(--Quizmain-color);
+    color: white;
 }

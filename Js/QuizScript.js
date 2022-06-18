@@ -106,6 +106,7 @@ function checkAnswer(){
     
     function retryQuiz(){
         correctScore = askedCount = 0;
+        _correctScore.innerHTML = 0;
         QuestionCorrect = 0;
         _retryBtn.style.display = "none";
         _checkBtn.style.display = "block";
