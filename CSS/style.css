@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 * {
     margin: 0;
@@ -14,14 +14,29 @@
     --QuizHouver-color: #eabfff;
 }
 
-
-
 .Nav {
     display: flex;
     align-items: center;
     background: var(--nav-color);
     width: 100%;
-    height: 5rem;
+    height: 100%;
+    min-height: 5rem;
+}
+
+.Logo {
+    align-items: center;
+    width: 20%;
+    min-width: 280px;
+    padding: 15px;
+    margin: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+  
+}
+
+.Logo img {
+    width: 100%;
+
 }
 
 .Nav h1 {
@@ -29,20 +44,25 @@
 }
 
 body {
+    position: relative;
     width: 100%;
     height: 100%;
     background: var(--second-color);
+    padding-bottom: 58px;
+    min-height: 100vh;
 }
 
 .MainCount {
+    display: flex;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 60px;
+    margin-bottom: 60px;
     width: 80%;
     height: 100%;
-
 }
 
 .QuizTable {
+
     width: 100%;
     height: 100%;
     min-height: 650px;
@@ -52,24 +72,29 @@ body {
     padding: 2%;
     font-family: 'Poppins', sans-serif;
 }
+
 .QuizTitle {
     width: 100%;
     height: 100%;
     min-height: 100px;
+
 }
 
 .QuizTitleText {
     padding: 20px;
     text-align: center;
     font-size: 27px;
+    font-weight: 700;
 }
 
 .QuizDifficult {
     font-size: 22px;
+    font-weight: 500;
 }
 
 .Quiztype {
     font-size: 22px;
+    font-weight: 500;
 }
 
 .Questions {
@@ -82,23 +107,34 @@ body {
 
 }
 
+#selected {
+    border: 2px solid var(--Quizsecond-color);
+    background-color: var(--QuizHouver-color);
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+}
+
 .Answer {
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
     margin: 10px;
     width: 90%;
     height: 100%;
     min-height: 60px;
     border: 2px solid var(--Quizmain-color);
     background-color: white;
-}
-
-.Questions button {
-    border-radius: 15px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
     transition: 500ms ease;
     font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
 }
 
-.Questions button:hover {
+.Answer:hover {
     border: 2px solid var(--Quizsecond-color);
     background-color: var(--QuizHouver-color);
     transform: translateY(-5px);
@@ -114,28 +150,8 @@ body {
     height: 100%;
     min-height: 80px;
     padding-top: 40px;
+    padding-bottom: 40px;
 
-
-}
-
-.DivCheckAndTry button {
-    width: 40%;
-    min-height: 40px;
-}
-
-.Answer {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    font-size: 15px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.selected {
-    border: 2px solid var(--Quizsecond-color);
-    background-color: var(--QuizHouver-color);
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
 }
 .QuizTitleTitleText {
     font-size: 50px;
@@ -148,59 +164,160 @@ body {
     padding: 30px;
 }
 
+#Results {
+    width: 100%;
+    height: 100%;
+    min-height: 30px;
+}
+
 .ResultsTextCorrect {
+    padding-top: 5px;
     padding-left: 5%;
     color: green;
     font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
 }
 
 .ResultsTextIncorrect {
+    padding-top: 5px;
     padding-left: 5%;
     color: red;
     font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
 }
 
 .QuestionCorrect {
-    padding-left: 5%;
-    padding-top: 10px;
-    font-size: 20px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 10px;
+    font-size: 35px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
     color: var(--Quizmain-color);
 }
 
 .SelectionOptionAtencion {
+    padding-top: 5px;
     padding-left: 5%;
     color: red;
     font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
 }
 
 #Btnretry {
     display: none;
+}
+
+.ButtonHover {
     border: 2px solid var(--Quizmain-color);
     background-color: var(--QuizHouver-color);
     transition: 500ms ease;
-    min-height: 60px;
+    width: 40%;
+    min-height: 80px;
     border-radius: 15px;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 28px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
 }
 
-#Btnretry:hover {
+.ButtonHover:hover {
     background-color: var(--Quizmain-color);
     color: white;
 }
-
-#BtnCheck {
-    border: 2px solid var(--Quizmain-color);
-    background-color: var(--QuizHouver-color);
-    transition: 500ms ease;
-    min-height: 60PX;
+.Points{
+    margin-top:20px ;
+    display: flex;
+    text-align: center;
+    width: 100%;
+    gap: 10px;
+}
+.ScorePoints{
+    flex: 1;
+    align-self: stretch;
     border-radius: 15px;
-    font-size: 18px;
-    font-weight: bold;
+    border: 2px solid var(--Quizsecond-color);
+    background: var(--QuizHouver-color) ;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.Footer{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 4rem;
+    background: var(--nav-color);
+    margin-top: 80px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
 }
 
-#BtnCheck:hover {
-    background-color: var(--Quizmain-color);
-    color: white;
+@media only screen and (max-width: 1300px) {
+    .countent {
+        display: block;
+    }
+
+    .countent div {
+        padding-top: 20px;
+    }
+
+    .countent p {
+        font-size: 28px;
+    }
+
+    .QuizTitleText {
+        font-size: 35px;
+    }
+
+    .QuizTitleTitleText {
+        font-size: 60px;
+    }
+
+    .Questions button {
+        font-size: 28px;
+        min-height: 90px;
+    }
+
+    #BtnCheck {
+        min-height: 90px;
+        font-size: 28px;
+
+    }
+
+    #Btnretry {
+        min-height: 90px;
+        font-size: 28px;
+    }
+
+    .ResultsTextCorrect {
+        font-size: 30px;
+    }
+
+    .ResultsTextIncorrect {
+        font-size: 30px;
+    }
+
+    #Results {
+
+        min-height: 70px;
+    }
+
+    .SelectionOptionAtencion {
+        font-size: 30px;
+    }
+
+    .ButtonHover:hover {
+        background-color: inherit;
+        color: inherit;
+    }
+}
+@media only screen and (max-width: 400px){
+    .Logo{
+        min-width:200px;
+    }
 }

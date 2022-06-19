@@ -1,52 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/style.css">
-    <title>WebQuizer</title>
+    <link rel="icon" type="image/png" href="Img/ico.png" />
+    <title>Friendly Trivia</title>
 </head>
 
 <body>
     <header class="Nav">
-        <h1>Logo</h1>
-        <img src="">
+        <div class="Logo">
+            <a href="index.html"><img src="Img/TriviaLogo.png"></a>
+        </div>
     </header>
     <div class="MainCount">
-    <div class="QuizTable">
-          <div class="QuizTitle">
-            <div class="countent">
-            <h2 class="QuizTitleTitleText">Question <span id="CountQuestion"></span>/<span id="totalQuestion"></span></h2>
-           <div>
-            <p class="QuizDifficult" id="difficult"></p>
-            <p class="Quiztype" id="category"></p>
-        </div>
-        </div>
-        <p class="QuizTitleText" id="question"></p>
-          </div>
-          <div class="Questions">
-           <button type="button"><h2></h2></button>
-           <button type="button"><h2></h2></button>
-           <button type="button"><h2></h2></button>
-           <button type="button"><h2></h2></button>
-        </div>
-        <div id="Results">
-
-        </div>
-        <div class="DivCheckAndTry">
-            <button  type="button" id="BtnCheck">Check</button>
-            <button  type="button" id="Btnretry">Retry</button>
+        <div class="QuizTable">
+            <div class="QuizTitle">
+                <div class="countent">
+                    <h2 class="QuizTitleTitleText">Question <span id="CountQuestion"></span>/<span
+                            id="totalQuestion"></span></h2>
+                    <div>
+                        <p class="QuizDifficult" id="difficult"></p>
+                        <p class="Quiztype" id="category"></p>
+                    </div>
+                </div>
+                <div class="QuizTitleText" id="question"></div>
             </div>
+            <div class="Questions">
+                <button type="button">
+                    <h2></h2>
+                </button>
+                <button type="button">
+                    <h2></h2>
+                </button>
+                <button type="button">
+                    <h2></h2>
+                </button>
+                <button type="button">
+                    <h2></h2>
+                </button>
+            </div>
+            <div id="Results">
+
+            </div>
+            <div class="Points" id="PointsShow">
+            </div>
+            <div class="DivCheckAndTry">
+                <button type="button" id="BtnCheck" class="ButtonHover">Check</button>
+                <button type="button" id="Btnretry" class="ButtonHover">Retry</button>
             </div>
         </div>
-
-
-
     </div>
-
-
     </div>
+    </div>
+    <footer class="Footer"><h2>Powerd by IgorK</h2></footer>
 </body>
 <script src="Js/QuizScript.js"></script>
+
 </html>
