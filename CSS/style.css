@@ -340,15 +340,12 @@ padding:10px;
     color: #ffffff;
 }
 .Onfire{
-    box-shadow: 0 0 6em #e25822;
+    box-shadow: inset 0 0 1em #e25822, 0 0 1em #e25822;
 }
 @media only screen and (max-width: 1300px) {
    .MainCount{
     width: 95%;
    }
-   
-   
-   
     .countent {
         display: block;
     }
@@ -384,16 +381,12 @@ padding:10px;
     .ResultsTextIncorrect {
         font-size: 30px;
     }
-
-    #Results {
-
-        min-height: 70px;
-    }
-
     .SelectionOptionAtencion {
         font-size: 30px;
     }
-
+    #Results {
+        min-height: 70px;
+    }
     .ButtonHover:hover {
         background-color: inherit;
         color: inherit;
@@ -408,4 +401,74 @@ padding:10px;
     .Logo{
         min-width:200px;
     }
+    .QuizTable{
+        padding: 10px;
+    }
+    .countent{
+        padding: 5px;
+    }
+    .countent p{
+        font-size: 21px;
+    }
+    .QuizTitleText{
+        font-size: 1.6rem;
+        font-weight: 700;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .DivCheckAndTry{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .Questions{
+        gap: 10px;
+    }
+    .ResultsTextCorrect {
+        font-size: 20px;
+    }
+
+    .ResultsTextIncorrect {
+        font-size: 20px;
+    }
+    .SelectionOptionAtencion {
+        font-size: 20px;
+    }
+    #Results{
+        min-height: 20px;
+    }
+#BtnCheck{
+    width: 100%;
+    min-height: 150px;
+}
+#Start{
+    margin-top: 15px;
+    min-height: 150px;
+    font-size: 30px;
+}
+.Rules h1{
+    font-size: 40px;
+    font-weight: 700;
+}
+.Rules h3{
+    font-size: 35px;
+    font-weight: 700;
+}
+.Rules p{
+    font-size: 25px;
+    font-weight: 500;
+    text-align: justify;
+}
+.DivChose{
+    font-size: 25px;
+}
+label{
+    font-size: 28px;
+    font-weight: 700;
+}
+input[type=radio] + label:before{
+  height:18px;
+  width:18px;
+
+}
+
 }
