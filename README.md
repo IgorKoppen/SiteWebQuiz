@@ -5,3 +5,4 @@
 <h2>Como Funciona:</h2>
 <p>As perguntas são geradas apartir da API OpenTrivia, link: <a href="https://opentdb.com">https://opentdb.com</a></p>
 <p>A funções do jogo são com base em qual quer outro jogo de trivia.</p>
+<p>Ver o Projeto: <a href="https://friendlytrivia.netlify.app">https://friendlytrivia.netlify.app</a></p>
