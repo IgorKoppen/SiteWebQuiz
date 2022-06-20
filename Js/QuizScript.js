@@ -126,7 +126,7 @@ function checkCount() {
     if (askedCount == totalQuestion) {
         setTimeout(function () {
         }, 5000);
-        _Points.innerHTML = `<div class="ScorePoints"><p class="QuestionCorrect">Your correct answers was ${QuestionCorrect}.</p></div> <div class="ScorePoints"> <p class="QuestionCorrect">Your point is ${PointScores}</p></div>`;
+        _Points.innerHTML = `<div class="ScorePoints"><p class="QuestionCorrect">Your corrects answers was ${QuestionCorrect}.</p></div> <div class="ScorePoints"> <p class="QuestionCorrect">Your point is ${PointScores}</p></div>`;
         _retryBtn.style.display = "block";
         _BackToMenu.style.display = "block";
         _checkBtn.style.display = "none";
@@ -159,7 +159,7 @@ function PointCalculate() {
 }
 function ScoreStrickCount() {
     ScoreStrick++;
-    if (ScoreStrick > 3) {
+    if (ScoreStrick > 2) {
         _QuizTable.classList.add('Onfire');
         PointScores += 20;
     }

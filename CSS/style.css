@@ -138,6 +138,21 @@ padding:10px;
     padding: 2%;
     font-family: 'Poppins', sans-serif;
 }
+.Rules {
+    font-family: 'Poppins', sans-serif;
+}
+.Rules h1{
+    font-size: 50px;
+    font-weight: 700;
+}
+.Rules h3{
+    font-size: 30px;
+    font-weight: 700;
+}
+.Rules p{
+    font-size: 20px;
+    font-weight: 500;
+}
 
 .QuizTitle {
     width: 100%;
