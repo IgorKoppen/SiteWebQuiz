@@ -60,9 +60,75 @@ body {
     width: 80%;
     height: 100%;
 }
+.QuizStart{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    padding: 2%;
+    font-family: 'Poppins', sans-serif;
+}
+input[type=radio]{
+  visibility: hidden;
+  position: absolute;
+}
+label{
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+input[type=radio] + label:before{
+  transition: 500ms ease;
+  height:15px;
+  width:15px;
+  margin-right: 2px;
+  content: " ";
+  display:inline-block;
+  vertical-align: baseline;
+  border:1px solid #777;
+  border-radius: 15px;
+}
+input[type=radio]:checked + label:before{
+  background:var(--Quizmain-color);
+  border: 1px solid var(--Quizsecond-color);
+}
+label:hover::before{
+    background:var(--Quizmain-color);
+    border: 1px solid var(--Quizsecond-color);
+}
+#Start{
+    margin-top: 50px;
+    border-radius: 15px;
+    transition: 500ms ease;
+    width: 100%;
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+    min-height: 80px;
+    border: 2px solid var(--Quizmain-color);
+    background-color: var(--QuizHouver-color);
+}
+#Start:hover{
+    background-color: var(--Quizmain-color);
+    color: white;
+}
+.DivStart{
+    width: 100%;
+}
+.DivChose{
+padding:10px;
+}
+.DivChose label{
+    padding-left: 10px;
+}
 
+.ChosesOfDifficult{
+    width: 100%;
+}
 .QuizTable {
-
+    display: none;
     width: 100%;
     height: 100%;
     min-height: 650px;
@@ -204,7 +270,9 @@ body {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
 }
-
+#BtnBackToMenu{
+    display: none;
+}
 #Btnretry {
     display: none;
 }
@@ -256,7 +324,9 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #ffffff;
 }
-
+.Onfire{
+    box-shadow: 0 0 5em rgb(224, 155, 27);
+}
 @media only screen and (max-width: 1300px) {
     .countent {
         display: block;
@@ -282,18 +352,10 @@ body {
         font-size: 28px;
         min-height: 90px;
     }
-
-    #BtnCheck {
-        min-height: 90px;
-        font-size: 28px;
-
-    }
-
-    #Btnretry {
+    .ButtonHover{
         min-height: 90px;
         font-size: 28px;
     }
-
     .ResultsTextCorrect {
         font-size: 30px;
     }
@@ -314,6 +376,11 @@ body {
     .ButtonHover:hover {
         background-color: inherit;
         color: inherit;
+    }
+    .DivChose{
+        display: grid;
+        grid-template: 1fr;
+        row-gap: 10px;
     }
 }
 @media only screen and (max-width: 400px){
