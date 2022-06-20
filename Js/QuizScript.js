@@ -22,7 +22,7 @@ let _RdbEasy = document.getElementById('Easy');
 let _RdbMedium = document.getElementById('Medium');
 let _RdbHard = document.getElementById('Hard');
 let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10, QuestionCorrect = 0, difficultOfQuestion = "", PointScores = 0, ScoreStrick = 0;
-
+let HideAnswerC = "";
 async function SendApiRequest() {
     let response;
     if(_RdbMixed.checked == true){
@@ -48,6 +48,10 @@ document.addEventListener('DOMContentLoaded', function () {
     eventListeners()
     _correctScore.textContent = correctScore;
 })
+function SaveCorrectAnswer(){
+    HideAnswerC = correctAnswer;
+    correctAnswer="";
+}
 function StartTheGame() {
     if(_RdbShort.checked == true){
         totalQuestion = 10;
@@ -76,7 +80,7 @@ function useApiData(data) {
     _difficulty.innerHTML = `<p>Difficulty: ${data.difficulty}</p>`
     _type.innerHTML = `<p>Category: ${data.category}</p>`
     _options.innerHTML = `${optionsList.map((option, index) => `<button type="button" class="Answer"> ${index + 1 + ". "}&nbsp<span>${option}</span></button>`).join('')}`
-
+    SaveCorrectAnswer();
     selectOption();
 }
 function selectOption() {
@@ -96,7 +100,7 @@ function checkAnswer() {
     btnColorEnable();
     if (_options.querySelector('#selected')) {
         let selectedAnswer = _options.querySelector('#selected span').textContent;
-        if (selectedAnswer == HTMLDecode(correctAnswer)) {
+        if (selectedAnswer == HTMLDecode(HideAnswerC)) {
             QuestionCorrect++;
             correctScore++;
             ScoreStrickCount();
@@ -104,7 +108,7 @@ function checkAnswer() {
             _result.innerHTML = `<p class="ResultsTextCorrect"> <i class = "fas fa-check"></i>correct answer! </p>`;
         } else {
             _QuizTable.classList.remove('Onfire');
-            _result.innerHTML = `<p class="ResultsTextIncorrect"> <i class = "fas fa-check"></i> incorrect answer!<small><b> Correct Answer: </b> ${correctAnswer}</small> </p>`;
+            _result.innerHTML = `<p class="ResultsTextIncorrect"> <i class = "fas fa-check"></i> incorrect answer!<small><b> Correct Answer: </b> ${HideAnswerC}</small> </p>`;
             correctScore++;
             ScoreStrick = 0;
         }
@@ -188,18 +192,4 @@ function Reset() {
     _BackToMenu.style.display = "none";
     _checkBtn.style.display = "block";
     _checkBtn.disabled = false;
-}
-try {
-    if (typeof(window.console) != "undefined") {
-        window.console = {};
-        window.console.log = function () {
-        };
-    }
-    if (typeof(alert) !== "undefined") {
-        alert = function ()
-        {
-        }
-    }
-
-} catch (ex) {
 }
