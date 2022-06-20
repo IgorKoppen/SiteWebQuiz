@@ -470,5 +470,7 @@ input[type=radio] + label:before{
   width:18px;
 
 }
-
+.Points{
+    margin-bottom: 20px;
+}
 }
