@@ -68,7 +68,7 @@ body {
     background-color: white;
     border-radius: 15px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
-    padding: 2%;
+    padding: 20px;
     font-family: 'Poppins', sans-serif;
 }
 input[type=radio]{
@@ -135,7 +135,7 @@ padding:10px;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
-    padding: 2%;
+    padding: 20px;
     font-family: 'Poppins', sans-serif;
 }
 .Rules {
@@ -340,9 +340,15 @@ padding:10px;
     color: #ffffff;
 }
 .Onfire{
-    box-shadow: 0 0 5em rgb(224, 155, 27);
+    box-shadow: 0 0 6em #e25822;
 }
 @media only screen and (max-width: 1300px) {
+   .MainCount{
+    width: 95%;
+   }
+   
+   
+   
     .countent {
         display: block;
     }

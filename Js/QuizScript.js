@@ -189,3 +189,17 @@ function Reset() {
     _checkBtn.style.display = "block";
     _checkBtn.disabled = false;
 }
+try {
+    if (typeof(window.console) != "undefined") {
+        window.console = {};
+        window.console.log = function () {
+        };
+    }
+    if (typeof(alert) !== "undefined") {
+        alert = function ()
+        {
+        }
+    }
+
+} catch (ex) {
+}
