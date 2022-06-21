@@ -329,15 +329,31 @@ padding:10px;
     bottom: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:flex-end;
     width: 100%;
-    height: 4rem;
+    min-height: 4rem;
     background: var(--nav-color);
     margin-top: 80px;
     font-size: 16px;
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
     color: #ffffff;
+}
+.FooterDivs{
+    padding-right: 15px;
+    padding-top: 15px;
+}
+.FooterDivs a{
+    padding-left: 10px;
+}
+.Icon{
+    transition: 500ms ease;
+    border-radius: 50%;
+    width: 100%;
+    max-width: 3rem;
+}
+.Icon:hover{
+background-color: #ffffff;
 }
 .Onfire{
     box-shadow: inset 0 0 1em #e25822, 0 0 1em #e25822;
