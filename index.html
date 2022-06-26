@@ -19,15 +19,14 @@
 <div class="QuizStart">
   <div class="Rules DivStart">
     <h1>How it Works:</h1>
-    <p>It's a trivia game, it will show four answers, choose, and click check if the answer is correct will appear below
-         "correct answer!" otherwise “incorrect answer! And show which one was right.” At the end of the game will show how
-          much you answer right and your points.</p>
+    <p>It's a trivia game that will show you four answers, choose one, and click on check. If your guess is correct a "correct answer!" message will appear below.
+         On the other hand an “incorrect answer!" message will apear also showing which one was right. At the end of the game you will see your score.</p>
           <h3>Grades:</h3>
      <p>How to get the point:<br>
         Hard: 100<br>
         Average: 50<br>
         Easy: 25<br>
-        If you get more than 2 correct you do a Strick. If the correct answer in a Strike earns you 20 more points.
+        If you get more than 2 correct answers in row you do a Strike. A Strike earns you 20 more points.
         </p>
   </div>
 <div class="MainChoses DivStart">
@@ -61,11 +60,21 @@
         <div class="QuizTable">
             <div class="QuizTitle">
                 <div class="countent">
-                    <h2 class="QuizTitleTitleText">Question <span id="CountQuestion"></span>/<span
-                            id="totalQuestion"></span></h2>
-                    <div>
+                    <h2 class="QuizTitleTitleText">Question <span id="CountQuestion"></span>/<span id="totalQuestion"></span></h2>
+                    <div id="Clock">
+                        <div class="circle" style="--clr:#a719fa;">
+                            <div class="dots Sec_dot"></div>
+                            <svg>
+                                <circle cx="70" cy="70" r="70"></circle>
+                                <circle cx="70" cy="70" r="70" id="ss"></circle>
+                            </svg>
+                            <div id="seconds">60</div>
+                        </div>       
+                    </div>
+                    <div class="QuizInformationDiv">
                         <p class="QuizDifficult" id="difficult"></p>
                         <p class="Quiztype" id="category"></p>
+                        <div class="VisualizeScore" id="VisualizeScore"></div>
                     </div>
                 </div>
                 <div class="QuizTitleText" id="question"></div>
@@ -90,7 +99,6 @@
             <div class="Points" id="PointsShow">
             </div>
             <div class="DivCheckAndTry">
-                <button type="button" id="BtnCheck" class="ButtonHover">Check</button>
                 <button type="button" id="Btnretry" class="ButtonHover">Retry</button>
                 <button type="button" id="BtnBackToMenu" class="ButtonHover">Back To Menu</button>
             </div>

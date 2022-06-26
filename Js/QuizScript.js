@@ -7,7 +7,6 @@ let _totalQuestion = document.getElementById('totalQuestion');
 let _checkAnswer = document.querySelectorAll('.Answer');
 let _result = document.getElementById('Results');
 let _Points = document.getElementById('PointsShow')
-let _checkBtn = document.getElementById('BtnCheck');
 let _retryBtn = document.getElementById('Btnretry');
 let _selectedAnswer = document.getElementsByClassName('selected');
 let _QuizTable = document.querySelector('.QuizTable');
@@ -21,25 +20,30 @@ let _RdbMixed = document.getElementById('Mixed');
 let _RdbEasy = document.getElementById('Easy');
 let _RdbMedium = document.getElementById('Medium');
 let _RdbHard = document.getElementById('Hard');
+let _VisualizeScore = document.getElementById('VisualizeScore');
+let _seconds = document.getElementById('seconds');
+let _ss = document.getElementById('ss');
+let _sec_dot = document.querySelector('.Sec_dot');
 let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10, QuestionCorrect = 0, difficultOfQuestion = "", PointScores = 0, ScoreStrick = 0;
 let HideAnswerC = "";
+var seconds = 60;
+
 async function SendApiRequest() {
     let response;
-    if(_RdbMixed.checked == true){
-     response = await fetch('https://opentdb.com/api.php?amount=1');
-    } else if(_RdbEasy.checked == true){
-      response = await fetch('https://opentdb.com/api.php?amount=1&difficulty=easy');
-    } else if(_RdbMedium.checked == true){
-      response = await fetch('https://opentdb.com/api.php?amount=1&difficulty=medium');
-    } else{
-      response = await fetch('https://opentdb.com/api.php?amount=1&difficulty=hard');
+    if (_RdbMixed.checked == true) {
+        response = await fetch('https://opentdb.com/api.php?amount=1');
+    } else if (_RdbEasy.checked == true) {
+        response = await fetch('https://opentdb.com/api.php?amount=1&difficulty=easy');
+    } else if (_RdbMedium.checked == true) {
+        response = await fetch('https://opentdb.com/api.php?amount=1&difficulty=medium');
+    } else {
+        response = await fetch('https://opentdb.com/api.php?amount=1&difficulty=hard');
     }
     let data = await response.json();
     _result.innerHTML = "";
     useApiData(data.results[0]);
 }
 function eventListeners() {
-    _checkBtn.addEventListener('click', checkAnswer);
     _retryBtn.addEventListener('click', retryQuiz);
     _BtnStart.addEventListener('click', StartTheGame);
     _BackToMenu.addEventListener('click', BackToMainMenu);
@@ -48,18 +52,18 @@ document.addEventListener('DOMContentLoaded', function () {
     eventListeners()
     _correctScore.textContent = correctScore;
 })
-function SaveCorrectAnswer(){
+function SaveCorrectAnswer() {
     HideAnswerC = correctAnswer;
-    correctAnswer="";
+    correctAnswer = "";
 }
 function StartTheGame() {
-    if(_RdbShort.checked == true){
+    if (_RdbShort.checked == true) {
         totalQuestion = 10;
         _totalQuestion.textContent = 10;
-    } else if(_RdbModerate.checked == true){
+    } else if (_RdbModerate.checked == true) {
         totalQuestion = 20;
         _totalQuestion.textContent = 20;
-    }else{
+    } else {
         totalQuestion = 30
         _totalQuestion.textContent = 30;
     }
@@ -67,10 +71,10 @@ function StartTheGame() {
     setTimeout(function () {
         _RuleTable.style.display = "none";
         _QuizTable.style.display = "block";
-    }, 500);
+    }, 800);
 }
 function useApiData(data) {
-    _checkBtn.disabled = false;
+    _options.disabled = false;
     correctAnswer = data.correct_answer;
     difficultOfQuestion = data.difficulty;
     let incorrectAnswer = data.incorrect_answers;
@@ -80,6 +84,8 @@ function useApiData(data) {
     _difficulty.innerHTML = `<p>Difficulty: ${data.difficulty}</p>`
     _type.innerHTML = `<p>Category: ${data.category}</p>`
     _options.innerHTML = `${optionsList.map((option, index) => `<button type="button" class="Answer"> ${index + 1 + ". "}&nbsp<span>${option}</span></button>`).join('')}`
+    _VisualizeScore.innerHTML = `<h2>Points: ${PointScores} </h2>`
+    StartTimer();
     SaveCorrectAnswer();
     selectOption();
 }
@@ -91,15 +97,16 @@ function selectOption() {
                 activeOption.removeAttribute('id');
             }
             option.setAttribute('id', 'selected');
+            checkAnswer();
         });
     });
 }
-
 function checkAnswer() {
-    _checkBtn.disabled = true;
-    btnColorEnable();
+    disabledOption();
+    StopTimer();
     if (_options.querySelector('#selected')) {
         let selectedAnswer = _options.querySelector('#selected span').textContent;
+
         if (selectedAnswer == HTMLDecode(HideAnswerC)) {
             QuestionCorrect++;
             correctScore++;
@@ -114,12 +121,13 @@ function checkAnswer() {
         }
         checkCount();
     } else {
-        btnColorDisable();
-        _result.innerHTML = `<p class="SelectionOptionAtencion"><i class = "fas fa-question"></i>Please select an option!</p>`;
-        _checkBtn.disabled = false;
+        _QuizTable.classList.remove('Onfire');
+        _result.innerHTML = `<p class="ResultsTextIncorrect"> <i class = "fas fa-check"></i> incorrect answer!<small><b> Correct Answer: </b> ${HideAnswerC}</small> </p>`;
+        correctScore++;
+        ScoreStrick = 0;
     }
-}
 
+}
 function HTMLDecode(textString) {
     let doc = new DOMParser().parseFromString(textString, "text/html");
     return doc.documentElement.textContent;
@@ -130,18 +138,19 @@ function checkCount() {
     if (askedCount == totalQuestion) {
         setTimeout(function () {
         }, 5000);
-        _Points.innerHTML = `<div class="ScorePoints"><p class="QuestionCorrect">Your corrects answers was ${QuestionCorrect}.</p></div> <div class="ScorePoints"> <p class="QuestionCorrect">Your point is ${PointScores}</p></div>`;
+        StopTimer();
+        _Points.innerHTML = `<div class="ScorePoints"><p class="QuestionCorrect">Your correct answers were ${QuestionCorrect}.</p></div> <div class="ScorePoints"> <p class="QuestionCorrect">Your point is ${PointScores}</p></div>`;
         _retryBtn.style.display = "block";
         _BackToMenu.style.display = "block";
-        _checkBtn.style.display = "none";
+
     } else {
         setTimeout(function () {
-            btnColorDisable();
+            StopTimer();
+            seconds = 60;
             SendApiRequest();
-        }, 500);
+        }, 800);
     }
 }
-
 function setCount() {
     _totalQuestion.textContent = totalQuestion;
     _correctScore.textContent = correctScore;
@@ -149,7 +158,6 @@ function setCount() {
 
 function retryQuiz() {
     Reset();
-    btnColorDisable();
     SendApiRequest();
 }
 function PointCalculate() {
@@ -173,15 +181,9 @@ function BackToMainMenu() {
     _RuleTable.style.display = "block";
     _QuizTable.style.display = "none";
 }
-function btnColorEnable() {
-    _checkBtn.style.background = "#660066";
-    _checkBtn.style.color = "#ffffff";
-}
-function btnColorDisable() {
-    _checkBtn.style.background = "#eabfff";
-    _checkBtn.style.color = "#000000";
-}
 function Reset() {
+    EnableOption();
+    seconds = 60;
     correctScore = askedCount = 0;
     _correctScore.innerHTML = 0;
     _Points.innerHTML = "";
@@ -190,6 +192,35 @@ function Reset() {
     ScoreStrick = 0;
     _retryBtn.style.display = "none";
     _BackToMenu.style.display = "none";
-    _checkBtn.style.display = "block";
-    _checkBtn.disabled = false;
+}
+function disabledOption() {
+    _options.querySelectorAll('.Answer').forEach((option) => {
+        option.disabled = true;
+    });
+}
+function EnableOption() {
+    _options.querySelectorAll('.Answer').forEach((option) => {
+        option.disabled = false;
+    });
+}
+function StartTimer() {
+    _seconds.innerHTML = seconds;
+    _sec_dot.style.transform = `rotate(${seconds * 6}deg)`;
+    _ss.style.strokeDashoffset = 440 - (430 * seconds) / 60;
+
+    timer = setInterval(() => {
+        if (seconds == 1) {
+            StopTimer();
+            checkAnswer();
+            checkCount();
+        }
+        seconds--;
+        _sec_dot.style.transform = `rotate(${seconds * 6}deg)`;
+        _ss.style.strokeDashoffset = 440 - (430 * seconds) / 60;
+        _seconds.innerHTML = seconds;
+
+    }, 1000)
+}
+function StopTimer() {
+    clearInterval(timer);
 }

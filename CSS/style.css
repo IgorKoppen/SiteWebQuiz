@@ -31,7 +31,7 @@
     margin: 10px;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 15px;
-  
+
 }
 
 .Logo img {
@@ -60,7 +60,8 @@ body {
     width: 80%;
     height: 100%;
 }
-.QuizStart{
+
+.QuizStart {
     position: relative;
     width: 100%;
     height: 100%;
@@ -71,35 +72,41 @@ body {
     padding: 20px;
     font-family: 'Poppins', sans-serif;
 }
-input[type=radio]{
-  visibility: hidden;
-  position: absolute;
+
+input[type=radio] {
+    visibility: hidden;
+    position: absolute;
 }
-label{
+
+label {
     font-size: 25px;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
 }
-input[type=radio] + label:before{
-  transition: 500ms ease;
-  height:15px;
-  width:15px;
-  margin-right: 2px;
-  content: " ";
-  display:inline-block;
-  vertical-align: baseline;
-  border:1px solid #777;
-  border-radius: 15px;
+
+input[type=radio]+label:before {
+    transition: 500ms ease;
+    height: 15px;
+    width: 15px;
+    margin-right: 2px;
+    content: " ";
+    display: inline-block;
+    vertical-align: baseline;
+    border: 1px solid #777;
+    border-radius: 15px;
 }
-input[type=radio]:checked + label:before{
-  background:var(--Quizmain-color);
-  border: 1px solid var(--Quizsecond-color);
-}
-label:hover::before{
-    background:var(--Quizmain-color);
+
+input[type=radio]:checked+label:before {
+    background: var(--Quizmain-color);
     border: 1px solid var(--Quizsecond-color);
 }
-#Start{
+
+label:hover::before {
+    background: var(--Quizmain-color);
+    border: 1px solid var(--Quizsecond-color);
+}
+
+#Start {
     margin-top: 50px;
     border-radius: 15px;
     transition: 500ms ease;
@@ -109,24 +116,30 @@ label:hover::before{
     min-height: 80px;
     border: 2px solid var(--Quizmain-color);
     background-color: var(--QuizHouver-color);
+    color: var(--Quizmain-color);
 }
-#Start:hover{
+
+#Start:hover {
     background-color: var(--Quizmain-color);
     color: white;
 }
-.DivStart{
+
+.DivStart {
     width: 100%;
 }
-.DivChose{
-padding:10px;
+
+.DivChose {
+    padding: 10px;
 }
-.DivChose label{
+
+.DivChose label {
     padding-left: 10px;
 }
 
-.ChosesOfDifficult{
+.ChosesOfDifficult {
     width: 100%;
 }
+
 .QuizTable {
     display: none;
     width: 100%;
@@ -138,18 +151,22 @@ padding:10px;
     padding: 20px;
     font-family: 'Poppins', sans-serif;
 }
+
 .Rules {
     font-family: 'Poppins', sans-serif;
 }
-.Rules h1{
+
+.Rules h1 {
     font-size: 50px;
     font-weight: 700;
 }
-.Rules h3{
+
+.Rules h3 {
     font-size: 30px;
     font-weight: 700;
 }
-.Rules p{
+
+.Rules p {
     font-size: 20px;
     font-weight: 500;
 }
@@ -176,6 +193,9 @@ padding:10px;
 .Quiztype {
     font-size: 22px;
     font-weight: 500;
+}
+.QuizInformationDiv{
+    max-width: 350px;
 }
 
 .Questions {
@@ -229,13 +249,13 @@ padding:10px;
     gap: 30px;
     width: 100%;
     height: 100%;
-    min-height: 80px;
     padding-top: 40px;
     padding-bottom: 40px;
 
 }
+
 .QuizTitleTitleText {
-    font-size: 50px;
+    font-size: 60px;
 }
 
 .countent {
@@ -243,6 +263,7 @@ padding:10px;
     align-items: center;
     justify-content: space-between;
     padding: 30px;
+    
 }
 
 #Results {
@@ -285,9 +306,11 @@ padding:10px;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
 }
-#BtnBackToMenu{
+
+#BtnBackToMenu {
     display: none;
 }
+
 #Btnretry {
     display: none;
 }
@@ -295,6 +318,7 @@ padding:10px;
 .ButtonHover {
     border: 2px solid var(--Quizmain-color);
     background-color: var(--QuizHouver-color);
+    color: var(--Quizmain-color);
     transition: 500ms ease;
     width: 40%;
     min-height: 80px;
@@ -309,27 +333,30 @@ padding:10px;
     background-color: var(--Quizmain-color);
     color: white;
 }
-.Points{
-    margin-top:20px ;
+
+.Points {
+    margin-top: 20px;
     display: flex;
     text-align: center;
     width: 100%;
     gap: 10px;
 }
-.ScorePoints{
+
+.ScorePoints {
     flex: 1;
     align-self: stretch;
     border-radius: 15px;
     border: 2px solid var(--Quizsecond-color);
-    background: var(--QuizHouver-color) ;
+    background: var(--QuizHouver-color);
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
-.Footer{
+
+.Footer {
     position: absolute;
     bottom: 0;
     display: flex;
     align-items: center;
-    justify-content:flex-end;
+    justify-content: flex-end;
     width: 100%;
     min-height: 4rem;
     background: var(--nav-color);
@@ -339,39 +366,150 @@ padding:10px;
     font-family: 'Poppins', sans-serif;
     color: #ffffff;
 }
-.FooterDivs{
+
+.FooterDivs {
     padding-right: 15px;
     padding-top: 15px;
 }
-.FooterDivs a{
+
+.FooterDivs a {
     padding-left: 10px;
 }
-.Icon{
+
+.Icon {
     transition: 500ms ease;
     border-radius: 50%;
     width: 100%;
     max-width: 3rem;
 }
-.Icon:hover{
-background-color: #ffffff;
+
+.Icon:hover {
+    background-color: #ffffff;
 }
-.Onfire{
+
+.Onfire {
     box-shadow: inset 0 0 1em #e25822, 0 0 1em #e25822;
 }
+
+.VisualizeScore {
+    color: var(--Quizmain-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 18px;
+    border-radius: 15px;
+    border: 2px solid var(--Quizsecond-color);
+    background: var(--QuizHouver-color);
+    width: 100%;
+    min-height: 60px;
+    max-width: 250px;
+}
+
+#Clock {
+    display: flex;
+    gap: 40px;
+    color: var(--Quizmain-color);
+}
+
+#Clock .circle {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Clock div {
+    position: absolute;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.5em;
+}
+
+#Clock .circle svg {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    transform: rotate(270deg);
+}
+
+#Clock .circle svg circle {
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+    stroke: white;
+    stroke-width: 4;
+    transform: translate(5px, 5px);
+}
+
+#Clock .circle svg circle:nth-child(2) {
+    stroke: var(--Quizmain-color);
+    stroke-dasharray: 440;
+}
+
+#Clock .ap {
+    position: relative;
+    font: 1em;
+    transform: translateX(-20px);
+}
+
+.dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+
+}
+
+.dots::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    width: 15px;
+    height: 15px;
+    background-color: var(--Quizsecond-color);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--Quizmain-color),
+        0 0 60px var(--Quizmain-color);
+
+}
 @media only screen and (max-width: 1300px) {
-   .MainCount{
-    width: 95%;
-   }
+    .MainCount {
+        width: 95%;
+    }
+
     .countent {
-        display: block;
+        flex-direction: column;
+        align-items: inherit;
+        padding: 5px;
     }
+#Clock{
+    margin-top: 20px;
 
-    .countent div {
-        padding-top: 20px;
+    justify-content: center;
+}
+    .QuizInformationDiv {
+        margin-top: 15px;
+        padding-top: 5px;
+     text-align: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        max-width: inherit;
     }
-
+    .VisualizeScore{
+        grid-column:  span 2;
+        grid-row-start: 1;
+        max-width: inherit;
+        font-size: 25px;
+    }
+    
     .countent p {
-        font-size: 28px;
+        font-size: 34px;
     }
 
     .QuizTitleText {
@@ -379,17 +517,19 @@ background-color: #ffffff;
     }
 
     .QuizTitleTitleText {
-        font-size: 60px;
+        font-size: 70px;
     }
 
     .Questions button {
         font-size: 28px;
         min-height: 90px;
     }
-    .ButtonHover{
+
+    .ButtonHover {
         min-height: 90px;
         font-size: 28px;
     }
+
     .ResultsTextCorrect {
         font-size: 30px;
     }
@@ -397,48 +537,55 @@ background-color: #ffffff;
     .ResultsTextIncorrect {
         font-size: 30px;
     }
+
     .SelectionOptionAtencion {
         font-size: 30px;
     }
+
     #Results {
         min-height: 70px;
     }
-    .ButtonHover:hover {
-        background-color: inherit;
-        color: inherit;
-    }
-    .DivChose{
+    .DivChose {
         display: grid;
         grid-template: 1fr;
         row-gap: 10px;
     }
 }
-@media only screen and (max-width: 400px){
-    .Logo{
-        min-width:200px;
+
+@media only screen and (max-width: 600px) {
+    .Logo {
+        min-width: 200px;
     }
-    .QuizTable{
+    .QuizTable {
         padding: 10px;
     }
-    .countent{
+    .QuizTitleTitleText{
+        font-size: 50px;
+    }
+    .countent {
         padding: 5px;
     }
-    .countent p{
+    
+    .countent p {
         font-size: 21px;
+        font-weight: 700;
     }
-    .QuizTitleText{
+
+    .QuizTitleText {
         font-size: 1.6rem;
         font-weight: 700;
         padding-top: 10px;
         padding-bottom: 10px;
     }
-    .DivCheckAndTry{
+    .DivCheckAndTry {
         padding-top: 5px;
         padding-bottom: 5px;
     }
-    .Questions{
+
+    .Questions {
         gap: 10px;
     }
+
     .ResultsTextCorrect {
         font-size: 20px;
     }
@@ -446,47 +593,58 @@ background-color: #ffffff;
     .ResultsTextIncorrect {
         font-size: 20px;
     }
+
     .SelectionOptionAtencion {
         font-size: 20px;
     }
-    #Results{
+    #Results {
         min-height: 20px;
     }
-#BtnCheck{
-    width: 100%;
-    min-height: 150px;
-}
-#Start{
-    margin-top: 15px;
-    min-height: 150px;
-    font-size: 30px;
-}
-.Rules h1{
-    font-size: 40px;
-    font-weight: 700;
-}
-.Rules h3{
-    font-size: 35px;
-    font-weight: 700;
-}
-.Rules p{
-    font-size: 25px;
-    font-weight: 500;
-    text-align: justify;
-}
-.DivChose{
-    font-size: 25px;
-}
-label{
-    font-size: 28px;
-    font-weight: 700;
-}
-input[type=radio] + label:before{
-  height:18px;
-  width:18px;
 
-}
-.Points{
-    margin-bottom: 20px;
-}
+    #Start {
+        margin-top: 15px;
+        min-height: 150px;
+        font-size: 30px;
+    }
+
+    .Rules h1 {
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+    .Rules h3 {
+        font-size: 35px;
+        font-weight: 700;
+    }
+
+    .Rules p {
+        font-size: 25px;
+        font-weight: 500;
+        text-align: justify;
+    }
+
+    .DivChose {
+        font-size: 25px;
+    }
+
+    label {
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    input[type=radio]+label:before {
+        height: 18px;
+        width: 18px;
+
+    }
+
+    .Points {
+        margin-bottom: 20px;
+    }
+    .Answer:hover {
+        background-color: inherit;
+        color: inherit;
+        transform: inherit;
+        box-shadow: inherit;
+    }
 }
