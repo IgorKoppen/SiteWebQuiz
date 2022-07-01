@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" href="Img/ico.png" />
     <title>Friendly Trivia</title>
 </head>
+
 <body>
     <header class="Nav">
         <div class="Logo">
@@ -16,99 +17,105 @@
         </div>
     </header>
     <div class="MainCount">
-<div class="QuizStart">
-  <div class="Rules DivStart">
-    <h1>How it Works:</h1>
-    <p>It's a trivia game that will show you four answers, choose one, and click on check. If your guess is correct a "correct answer!" message will appear below.
-         On the other hand an “incorrect answer!" message will apear also showing which one was right. At the end of the game you will see your score.</p>
-          <h3>Grades:</h3>
-     <p>How to get the point:<br>
-        Hard: 100<br>
-        Average: 50<br>
-        Easy: 25<br>
-        If you get more than 2 correct answers in row you do a Strike. A Strike earns you 20 more points.
-        </p>
-  </div>
-<div class="MainChoses DivStart">
-    <div class="ChosesStart DivChose">
-        <h2>Type of match:</h2>
-    <input type="radio" id="Short" name="Type" checked>
-    <label for="Short">Short</label>
-    <input type="radio" id="Moderate" name="Type">
-    <label for="Moderate">Moderate</label>
-    <input type="radio" id="Long" name="Type">
-    <label for="Long">Long</label>
-</div>
-<div class="ChosesOfDifficult DivChose">
-    <h2>Difficult of the match:</h2>
-    <input type="radio" id="Mixed" name="Difficult" checked>
-    <label for="Mixed">Mixed</label>
-    <input type="radio" id="Easy" name="Difficult">
-    <label for="Easy">Easy</label>
-    <input type="radio" id="Medium" name="Difficult">
-    <label for="Medium">Medium</label>
-    <input type="radio" id="Hard" name="Difficult">
-    <label for="Hard">Hard</label>
-</div>
-<div class="ChosesStart DivChoses">
-    <button type="button" id="Start">
-        <h2>Start</h2>
-    </button>
-</div>
-</div>
-</div>
+        <div class="QuizStart">
+            <div class="Rules DivStart">
+                <h1>How it Works:</h1>
+                <p>It's a trivia game that will show you four answers, choose one, and click on check. If your guess is
+                    correct a "correct answer!" message will appear below.
+                    On the other hand an “incorrect answer!" message will apear also showing which one was right. At the
+                    end of the game you will see your score.</p>
+                <h3>Grades:</h3>
+                <p>How to get the point:<br>
+                    Hard: 100<br>
+                    Average: 50<br>
+                    Easy: 25<br>
+                    If you get more than 2 correct answers in row you do a Strike. A Strike earns you 20 more points.
+                </p>
+            </div>
+            <div class="MainChoses DivStart">
+                <div class="ChosesStart DivChose">
+                    <h2>Type of match:</h2>
+                    <input type="radio" id="Short" name="Type" checked>
+                    <label for="Short">Short</label>
+                    <input type="radio" id="Moderate" name="Type">
+                    <label for="Moderate">Moderate</label>
+                    <input type="radio" id="Long" name="Type">
+                    <label for="Long">Long</label>
+                </div>
+                <div class="ChosesOfDifficult DivChose">
+                    <h2>Difficult of the match:</h2>
+                    <input type="radio" id="Mixed" name="Difficult" checked>
+                    <label for="Mixed">Mixed</label>
+                    <input type="radio" id="Easy" name="Difficult">
+                    <label for="Easy">Easy</label>
+                    <input type="radio" id="Medium" name="Difficult">
+                    <label for="Medium">Medium</label>
+                    <input type="radio" id="Hard" name="Difficult">
+                    <label for="Hard">Hard</label>
+                </div>
+                <div class="ChosesStart DivChoses">
+                    <button type="button" id="Start">
+                        <h2>Start</h2>
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="QuizTable">
             <div class="QuizTitle">
-                <div class="countent">
-                    <h2 class="QuizTitleTitleText">Question <span id="CountQuestion"></span>/<span id="totalQuestion"></span></h2>
-                    <div id="Clock">
-                        <div class="circle" style="--clr:#a719fa;">
-                            <div class="dots Sec_dot"></div>
-                            <svg>
-                                <circle cx="70" cy="70" r="70"></circle>
-                                <circle cx="70" cy="70" r="70" id="ss"></circle>
-                            </svg>
-                            <div id="seconds">60</div>
-                        </div>       
+                <div id="AllCountent">
+                    <div class="countent">
+                        <h2 class="QuizTitleTitleText">Question <span id="CountQuestion"></span>/<span
+                                id="totalQuestion"></span></h2>
+                        <div id="Clock">
+                            <div class="circle" style="--clr:#a719fa;">
+                                <div class="dots Sec_dot"></div>
+                                <svg>
+                                    <circle cx="70" cy="70" r="70"></circle>
+                                    <circle cx="70" cy="70" r="70" id="ss"></circle>
+                                </svg>
+                                <div id="seconds">60</div>
+                            </div>
+                        </div>
+                        <div class="QuizInformationDiv">
+                            <p class="QuizDifficult" id="difficult"></p>
+                            <p class="Quiztype" id="category"></p>
+                            <div class="VisualizeScore" id="VisualizeScore"></div>
+                        </div>
                     </div>
-                    <div class="QuizInformationDiv">
-                        <p class="QuizDifficult" id="difficult"></p>
-                        <p class="Quiztype" id="category"></p>
-                        <div class="VisualizeScore" id="VisualizeScore"></div>
+                    <div class="QuizTitleText" id="question"></div>
+
+                    <div class="Questions">
+                        <button type="button">
+                            <h2></h2>
+                        </button>
+                        <button type="button">
+                            <h2></h2>
+                        </button>
+                        <button type="button">
+                            <h2></h2>
+                        </button>
+                        <button type="button">
+                            <h2></h2>
+                        </button>
+                    </div>
+                    <div id="Results">
+
+                    </div>
+                    <div class="Points" id="PointsShow">
+                    </div>
+                    <div class="DivCheckAndTry">
+                        <button type="button" id="Btnretry" class="ButtonHover">Retry</button>
+                        <button type="button" id="BtnBackToMenu" class="ButtonHover">Back To Menu</button>
                     </div>
                 </div>
-                <div class="QuizTitleText" id="question"></div>
-            </div>
-            <div class="Questions">
-                <button type="button">
-                    <h2></h2>
-                </button>
-                <button type="button">
-                    <h2></h2>
-                </button>
-                <button type="button">
-                    <h2></h2>
-                </button>
-                <button type="button">
-                    <h2></h2>
-                </button>
-            </div>
-            <div id="Results">
-
-            </div>
-            <div class="Points" id="PointsShow">
-            </div>
-            <div class="DivCheckAndTry">
-                <button type="button" id="Btnretry" class="ButtonHover">Retry</button>
-                <button type="button" id="BtnBackToMenu" class="ButtonHover">Back To Menu</button>
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    <footer class="Footer"><a href="https://www.linkedin.com/in/igor-koppen-pasqualino-pereira-781043236/"><div class="FooterDivs"><img class="Icon" src="Img/Linkedin.png"></a> <a href="https://github.com/IgorKoppen/SiteWebQuiz"><img class="Icon" src="Img/Git.png"></a></div></footer>
+    <footer class="Footer"><a href="https://www.linkedin.com/in/igor-koppen-pasqualino-pereira-781043236/">
+            <div class="FooterDivs"><img class="Icon" src="Img/Linkedin.png">
+        </a> <a href="https://github.com/IgorKoppen/SiteWebQuiz"><img class="Icon" src="Img/Git.png"></a></div>
+    </footer>
 </body>
 <script src="Js/QuizScript.js"></script>
 
 </html>
-

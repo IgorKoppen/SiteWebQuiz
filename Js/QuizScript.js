@@ -24,6 +24,7 @@ let _VisualizeScore = document.getElementById('VisualizeScore');
 let _seconds = document.getElementById('seconds');
 let _ss = document.getElementById('ss');
 let _sec_dot = document.querySelector('.Sec_dot');
+let _AllCountent = document.getElementById('AllCountent');
 let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10, QuestionCorrect = 0, difficultOfQuestion = "", PointScores = 0, ScoreStrick = 0;
 let HideAnswerC = "";
 var seconds = 60;
@@ -69,9 +70,8 @@ function StartTheGame() {
     }
     SendApiRequest();
     setTimeout(function () {
-        _RuleTable.style.display = "none";
-        _QuizTable.style.display = "block";
-    }, 800);
+        animationStart()
+    }, 600);
 }
 function useApiData(data) {
     _options.disabled = false;
@@ -106,13 +106,12 @@ function checkAnswer() {
     StopTimer();
     if (_options.querySelector('#selected')) {
         let selectedAnswer = _options.querySelector('#selected span').textContent;
-
         if (selectedAnswer == HTMLDecode(HideAnswerC)) {
             QuestionCorrect++;
+            _result.innerHTML = `<p class="ResultsTextCorrect"> <i class = "fas fa-check"></i>correct answer! </p>`;
             correctScore++;
             ScoreStrickCount();
             PointCalculate();
-            _result.innerHTML = `<p class="ResultsTextCorrect"> <i class = "fas fa-check"></i>correct answer! </p>`;
         } else {
             _QuizTable.classList.remove('Onfire');
             _result.innerHTML = `<p class="ResultsTextIncorrect"> <i class = "fas fa-check"></i> incorrect answer!<small><b> Correct Answer: </b> ${HideAnswerC}</small> </p>`;
@@ -134,22 +133,26 @@ function HTMLDecode(textString) {
 }
 function checkCount() {
     askedCount++;
-    setCount();
     if (askedCount == totalQuestion) {
         setTimeout(function () {
-        }, 5000);
-        StopTimer();
-        _Points.innerHTML = `<div class="ScorePoints"><p class="QuestionCorrect">Your correct answers were ${QuestionCorrect}.</p></div> <div class="ScorePoints"> <p class="QuestionCorrect">Your point is ${PointScores}</p></div>`;
-        _retryBtn.style.display = "block";
-        _BackToMenu.style.display = "block";
+            StopTimer();
+            _Points.innerHTML = `<div class="ScorePoints"><p class="QuestionCorrect">Your correct answers were ${QuestionCorrect}.</p></div> <div class="ScorePoints"> <p class="QuestionCorrect">Your point is ${PointScores}</p></div>`;
+            animationRetryFadein();
+        }, 500);
 
     } else {
         setTimeout(function () {
             StopTimer();
             seconds = 60;
-            SendApiRequest();
+            animationQuizFade();
+            setTimeout(function () {
+                SendApiRequest();
+            }, 1000)
         }, 800);
     }
+    setTimeout(function () {
+        setCount();
+    }, 2200);
 }
 function setCount() {
     _totalQuestion.textContent = totalQuestion;
@@ -157,8 +160,12 @@ function setCount() {
 }
 
 function retryQuiz() {
-    Reset();
-    SendApiRequest();
+    animationRetryFadeout();
+    animationQuizFade();
+    setTimeout(() => {
+        Reset();
+        SendApiRequest();
+    }, 800);
 }
 function PointCalculate() {
     if (difficultOfQuestion == "hard") {
@@ -177,9 +184,10 @@ function ScoreStrickCount() {
     }
 }
 function BackToMainMenu() {
-    Reset();
-    _RuleTable.style.display = "block";
-    _QuizTable.style.display = "none";
+    animationBackToMenu();
+    setTimeout(() => {
+        Reset();
+    }, 400);
 }
 function Reset() {
     EnableOption();
@@ -190,8 +198,7 @@ function Reset() {
     PointScores = 0;
     QuestionCorrect = 0;
     ScoreStrick = 0;
-    _retryBtn.style.display = "none";
-    _BackToMenu.style.display = "none";
+
 }
 function disabledOption() {
     _options.querySelectorAll('.Answer').forEach((option) => {
@@ -223,4 +230,64 @@ function StartTimer() {
 }
 function StopTimer() {
     clearInterval(timer);
+}
+function animationStart() {
+    setTimeout(function () {
+        _RuleTable.style.animation = "fadeout 0.3s";
+        setTimeout(function () {
+            _RuleTable.style.display = "none";
+        }, 300);
+    }, 300);
+    setTimeout(function () {
+        _QuizTable.style.animation = "fadein 0.3s";
+        setTimeout(function () {
+            _QuizTable.style.display = "block";
+            _QuizTable.style.opacity = "1";
+        }, 300);
+    }, 300);
+}
+function animationBackToMenu() {
+    setTimeout(function () {
+        _QuizTable.style.animation = "fadeout 0.3s";
+        setTimeout(function () {
+            _QuizTable.style.display = "none";
+        }, 300);
+    }, 300);
+    setTimeout(function () {
+        _RuleTable.style.animation = "fadein 0.3s";
+        setTimeout(function () {
+            _RuleTable.style.display = "block";
+            _retryBtn.style.display = "none";
+            _BackToMenu.style.display = "none";
+        }, 300);
+    }, 300);
+}
+function animationRetryFadeout() {
+    setTimeout(function () {
+        _retryBtn.style.animation = "fadeout 0.3s";
+        _BackToMenu.style.animation = "fadeout 0.3s";
+        setTimeout(function () {
+            _retryBtn.style.display = "none";
+            _BackToMenu.style.display = "none";
+        }, 300);
+    }, 300);
+}
+function animationRetryFadein() {
+    setTimeout(function () {
+        _retryBtn.style.animation = "fadein 0.3s";
+        _BackToMenu.style.animation = "fadein 0.3s";
+        setTimeout(function () {
+            _retryBtn.style.display = "block";
+            _BackToMenu.style.display = "block";
+        }, 300);
+    }, 300);
+}
+function animationQuizFade() {
+    setTimeout(function () {
+        _AllCountent.style.animation = "fadeout 0.6s linear";
+        setTimeout(function () {
+            _AllCountent.style.animation = "fadein 0.7s linear";
+        }, 600);
+    }, 600);
+
 }
