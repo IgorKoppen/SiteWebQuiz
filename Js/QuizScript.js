@@ -25,8 +25,7 @@ let _seconds = document.getElementById('seconds');
 let _ss = document.getElementById('ss');
 let _sec_dot = document.querySelector('.Sec_dot');
 let _AllCountent = document.getElementById('AllCountent');
-let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10, QuestionCorrect = 0, difficultOfQuestion = "", PointScores = 0, ScoreStrick = 0;
-let HideAnswerC = "";
+let correctScore = askedCount = 0, totalQuestion = 10, QuestionCorrect = 0, difficultOfQuestion = "", PointScores = 0, ScoreStrick = 0;
 var seconds = 60;
 
 async function SendApiRequest() {
@@ -41,12 +40,12 @@ async function SendApiRequest() {
     } else {
         response = await fetch('https://opentdb.com/api.php?amount=1&difficulty=hard');
     }
-} catch(err){
-    SendApiRequest();
-}
     let data = await response.json();
     _result.innerHTML = "";
     useApiData(data.results[0]);
+} catch(err){
+    SendApiRequest();
+}
 }
 function eventListeners() {
     _retryBtn.addEventListener('click', retryQuiz);
@@ -57,12 +56,8 @@ document.addEventListener('DOMContentLoaded', function () {
     eventListeners()
     _correctScore.textContent = correctScore;
 })
-function SaveCorrectAnswer() {
-    HideAnswerC = correctAnswer;
-    correctAnswer = "";
-}
+
 function StartTheGame() {
-    
     if (_RdbShort.checked == true) {
         totalQuestion = 10;
         _totalQuestion.textContent = 10;
@@ -79,6 +74,7 @@ function StartTheGame() {
     }, 600);
 }
 function useApiData(data) {
+    let correctAnswer = "";
     _options.disabled = false;
     correctAnswer = data.correct_answer;
     difficultOfQuestion = data.difficulty;
@@ -91,10 +87,9 @@ function useApiData(data) {
     _options.innerHTML = `${optionsList.map((option, index) => `<button type="button" class="Answer"> ${index + 1 + ". "}&nbsp<span>${option}</span></button>`).join('')}`
     _VisualizeScore.innerHTML = `<h2>Points: ${PointScores} </h2>`
     StartTimer();
-    SaveCorrectAnswer();
-    selectOption();
+    selectOption(correctAnswer);
 }
-function selectOption() {
+function selectOption(correctAnswer) {
     _options.querySelectorAll('.Answer').forEach((option) => {
         option.addEventListener('click', function () {
             if (_options.querySelector('#selected')) {
@@ -102,16 +97,16 @@ function selectOption() {
                 activeOption.removeAttribute('id');
             }
             option.setAttribute('id', 'selected');
-            checkAnswer();
+            checkAnswer(correctAnswer);
         });
     });
 }
-function checkAnswer() {
+function checkAnswer(correctAnswer) {
     disabledOption();
     StopTimer();
     if (_options.querySelector('#selected')) {
         let selectedAnswer = _options.querySelector('#selected span').textContent;
-        if (selectedAnswer == HTMLDecode(HideAnswerC)) {
+        if (selectedAnswer == HTMLDecode(correctAnswer)) {
             QuestionCorrect++;
             _result.innerHTML = `<p class="ResultsTextCorrect"> <i class = "fas fa-check"></i>correct answer! </p>`;
             correctScore++;
@@ -119,14 +114,14 @@ function checkAnswer() {
             PointCalculate();
         } else {
             _QuizTable.classList.remove('Onfire');
-            _result.innerHTML = `<p class="ResultsTextIncorrect"> <i class = "fas fa-check"></i> incorrect answer!<small><b> Correct Answer: </b> ${HideAnswerC}</small> </p>`;
+            _result.innerHTML = `<p class="ResultsTextIncorrect"> <i class = "fas fa-check"></i> incorrect answer!<small><b> Correct Answer: </b> ${correctAnswer}</small> </p>`;
             correctScore++;
             ScoreStrick = 0;
         }
         checkCount();
     } else {
         _QuizTable.classList.remove('Onfire');
-        _result.innerHTML = `<p class="ResultsTextIncorrect"> <i class = "fas fa-check"></i> incorrect answer!<small><b> Correct Answer: </b> ${HideAnswerC}</small> </p>`;
+        _result.innerHTML = `<p class="ResultsTextIncorrect"> <i class = "fas fa-check"></i> incorrect answer!<small><b> Correct Answer: </b> ${correctAnswer}</small> </p>`;
         correctScore++;
         ScoreStrick = 0;
     }
@@ -238,18 +233,18 @@ function StopTimer() {
 }
 function animationStart() {
     setTimeout(function () {
-        _RuleTable.style.animation = "fadeout 0.3s";
+        _RuleTable.style.animation = "fadeout 0.4s";
         setTimeout(function () {
             _RuleTable.style.display = "none";
-        }, 300);
-    }, 300);
+        }, 400);
+    }, 400);
     setTimeout(function () {
-        _QuizTable.style.animation = "fadein 0.3s";
+        _QuizTable.style.animation = "fadein 0.4s";
         setTimeout(function () {
             _QuizTable.style.display = "block";
             _QuizTable.style.opacity = "1";
-        }, 300);
-    }, 300);
+        }, 400);
+    }, 400);
 }
 function animationBackToMenu() {
     setTimeout(function () {
@@ -289,7 +284,7 @@ function animationRetryFadein() {
 }
 function animationQuizFade() {
     setTimeout(function () {
-        _AllCountent.style.animation = "fadeout 0.6s linear";
+        _AllCountent.style.animation = "fadeout 0.7s linear";
         setTimeout(function () {
             _AllCountent.style.animation = "fadein 0.7s linear";
         }, 600);
