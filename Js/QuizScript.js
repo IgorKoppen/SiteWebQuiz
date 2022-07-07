@@ -31,6 +31,7 @@ var seconds = 60;
 
 async function SendApiRequest() {
     let response;
+    try{
     if (_RdbMixed.checked == true) {
         response = await fetch('https://opentdb.com/api.php?amount=1');
     } else if (_RdbEasy.checked == true) {
@@ -40,6 +41,9 @@ async function SendApiRequest() {
     } else {
         response = await fetch('https://opentdb.com/api.php?amount=1&difficulty=hard');
     }
+} catch(err){
+    SendApiRequest();
+}
     let data = await response.json();
     _result.innerHTML = "";
     useApiData(data.results[0]);
@@ -58,6 +62,7 @@ function SaveCorrectAnswer() {
     correctAnswer = "";
 }
 function StartTheGame() {
+    
     if (_RdbShort.checked == true) {
         totalQuestion = 10;
         _totalQuestion.textContent = 10;
