@@ -72,7 +72,7 @@ body {
     padding: 20px;
     font-family: 'Poppins', sans-serif;
     transition: 800ms ease;
-    opacity: 1;
+    opacity: 0;
 }
 
 input[type=radio] {
@@ -453,6 +453,10 @@ label:hover::before {
     stroke-dasharray: 440;
 }
 
+#Clock .circle svg circle:nth-child(1) {
+    stroke: black;
+    stroke-dasharray: 440;
+}
 #Clock .ap {
     position: relative;
     font: 1em;
@@ -481,6 +485,14 @@ label:hover::before {
         0 0 60px var(--Quizmain-color);
 
 }
+.AllCountent{
+    opacity: 0;
+    transition: 800ms ease;
+}
+.shows{
+    opacity: 1;
+}
+
 @media only screen and (max-width: 1300px) {
     .MainCount {
         width: 95%;
