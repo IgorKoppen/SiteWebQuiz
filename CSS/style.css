@@ -13,19 +13,24 @@
     --Quizsecond-color: #d580ff;
     --QuizHouver-color: #eabfff;
 }
+
 ::-webkit-scrollbar {
     width: 10px;
-  }
+}
+
 ::-webkit-scrollbar-track {
     background: var(--Quizmain-color);
-  }
-  ::-webkit-scrollbar-thumb {
+}
+
+::-webkit-scrollbar-thumb {
     background: var(--QuizHouver-color);
-    border-radius: 15px ;
-  }
-  ::-webkit-scrollbar-thumb:hover {
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
     background: var(--Quizsecond-color);
-  }
+}
+
 .Nav {
     display: flex;
     align-items: center;
@@ -90,7 +95,7 @@ body {
 input[type=radio] {
     visibility: hidden;
     position: absolute;
-    
+
 }
 
 label {
@@ -123,7 +128,7 @@ label:hover::before {
 }
 
 #Start {
-    margin-top: 50px;
+    margin-top: 20px;
     border-radius: 15px;
     transition: 500ms ease;
     width: 100%;
@@ -133,6 +138,7 @@ label:hover::before {
     border: 2px solid var(--Quizmain-color);
     background-color: var(--QuizHouver-color);
     color: var(--Quizmain-color);
+    cursor: pointer;
 }
 
 #Start:hover {
@@ -212,7 +218,8 @@ label:hover::before {
     font-size: 22px;
     font-weight: 500;
 }
-.QuizInformationDiv{
+
+.QuizInformationDiv {
     max-width: 350px;
     min-width: 300px;
 }
@@ -282,7 +289,7 @@ label:hover::before {
     align-items: center;
     justify-content: space-between;
     padding: 30px;
-    
+
 }
 
 #Results {
@@ -470,6 +477,7 @@ label:hover::before {
     stroke: black;
     stroke-dasharray: 440;
 }
+
 #Clock .ap {
     position: relative;
     font: 1em;
@@ -498,13 +506,16 @@ label:hover::before {
         0 0 60px var(--Quizmain-color);
 
 }
-.AllCountent{
+
+.AllCountent {
     opacity: 0;
     transition: 800ms ease;
 }
-.shows{
+
+.shows {
     opacity: 1;
 }
+
 select {
     appearance: none;
     background-color: transparent;
@@ -518,101 +529,106 @@ select {
     line-height: inherit;
     z-index: 1;
     outline: none;
-  }
-#CategoryOptions{
-    background-color:var(--QuizHouver-color);
+}
+
+#CategoryOptions {
+    margin-top: 5px;
+    background-color: var(--QuizHouver-color);
     border: 2px solid var(--Quizmain-color);
     background-position: right 10px center;
     background-repeat: no-repeat;
     background-size: auto 50%;
-    border-radius:10px;
+    border-radius: 10px;
     color: var(--Quizmain-color);
     font-size: 18px;
     padding: 10px 30px 10px 10px;
     appearance: none;
-    cursor: pointer; 
+    cursor: pointer;
     transition: 800ms ease;
 }
 
-#CategoryOptions::after{
-    content: "";
-    width: 0.8em;
-    height: 0.5em;
-    background-color: white;
-    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-}
-#CategoryOptions:hover{
-    background-color:var(--Quizmain-color);
-    color: var(--QuizHouver-color)
-}
-#CategoryOptions:focus{
-    background-color:var(--Quizmain-color);
+#CategoryOptions:hover {
+    background-color: var(--Quizmain-color);
     color: var(--QuizHouver-color)
 }
 
-.Optionstrivia{
-    cursor: pointer;
+#CategoryOptions:focus {
+    background-color: var(--Quizmain-color);
+    color: var(--QuizHouver-color)
 }
 
 @media only screen and (max-width: 1300px) {
-    ::-webkit-scrollbar{
+    ::-webkit-scrollbar {
         width: 0;
     }
+
     .MainCount {
         width: 95%;
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
-    .VisualizeScore{
+
+    .VisualizeScore {
         transform: scale(0.9);
     }
+
     .QuizTable {
         padding: 10px;
         transform: scale(0.9);
     }
-    .QuizStart{
+
+    .QuizStart {
         transform: scale(0.9);
-        
+
     }
+
     .countent {
         flex-direction: column;
         align-items: inherit;
         padding: 5px;
     }
-#Clock{
-    margin-top: 20px;
 
-    justify-content: center;
-}
+    #Clock {
+        margin-top: 10px;
+
+        justify-content: center;
+    }
+
     .QuizInformationDiv {
-        margin-top: 15px;
-        padding-top: 5px;
-     text-align: center;
+        margin-top: 5px;
+        padding-top: 3px;
+        text-align: center;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
         max-width: inherit;
     }
-    .VisualizeScore{
-        grid-column:  span 2;
+
+    .VisualizeScore {
+        grid-column: span 2;
         grid-row-start: 1;
         max-width: inherit;
-        font-size: 25px;
+        font-size: 22px;
+        margin: 0;
     }
-    
+
     .countent p {
-        font-size: 34px;
+        font-size: 20px;
     }
 
     .QuizTitleText {
-        font-size: 35px;
+        font-size: 24px;
     }
 
     .QuizTitleTitleText {
-        font-size: 70px;
+        font-size: 50px;
     }
 
     .Questions button {
-        font-size: 28px;
-        min-height: 90px;
+        font-size: 25px;
+        min-height: 40px;
+        margin:7px;
+        padding: 7px;
     }
 
     .ButtonHover {
@@ -621,47 +637,72 @@ select {
     }
 
     .ResultsTextCorrect {
-        font-size: 30px;
+        font-size: 20px;
     }
 
     .ResultsTextIncorrect {
-        font-size: 30px;
+        font-size: 20px;
     }
 
     .SelectionOptionAtencion {
-        font-size: 30px;
+        font-size: 20px;
     }
 
     #Results {
         min-height: 70px;
     }
+
     .DivChose {
         display: grid;
         grid-template: 1fr;
-        row-gap: 10px;
+        row-gap: 5px;
     }
+
+    .Rules h1 {
+        font-size: 35px;
+        font-weight: 700;
+    }
+
+    .Rules h3 {
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    .Rules p {
+        font-size: 18px;
+        font-weight: 500;
+        text-align: justify;
+    }
+    label {
+        font-size: 20px;
+    }
+
+    input[type=radio]+label:before {
+        height: 13px;
+        width: 13px;
+
+    }
+
 }
 
 @media only screen and (max-width: 700px) {
     .Logo {
         min-width: 200px;
     }
-    .QuizInformationDiv{
+
+    .QuizInformationDiv {
         margin: 0;
         gap: 5px;
         padding: 0;
     }
-    .MainCount{
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-    .QuizTitleTitleText{
+    .QuizTitleTitleText {
         font-size: 40px;
     }
+
     .countent {
         padding: 2px;
     }
-    
+
     .countent p {
         font-size: 17px;
         font-weight: 700;
@@ -672,6 +713,7 @@ select {
         font-weight: 700;
         padding: 5px;
     }
+
     .DivCheckAndTry {
         padding-top: 5px;
         padding-bottom: 5px;
@@ -692,6 +734,7 @@ select {
     .SelectionOptionAtencion {
         font-size: 20px;
     }
+
     #Results {
         min-height: 20px;
     }
@@ -706,7 +749,7 @@ select {
         font-size: 29px;
         font-weight: 700;
     }
-  
+
     .Rules h3 {
         font-size: 24px;
         font-weight: 700;
@@ -721,7 +764,7 @@ select {
     .DivChose {
         font-size: 15px;
         padding: 5px;
-        row-gap:5px;
+        row-gap: 5px;
     }
 
     label {
@@ -738,66 +781,96 @@ select {
     .Points {
         margin-bottom: 20px;
     }
-    .Answer{
+
+    .Answer {
         padding: 5px;
         margin: 3px;
     }
+
     .Answer:hover {
         background-color: inherit;
         color: inherit;
         transform: inherit;
         box-shadow: inherit;
     }
-    #Clock{
+
+    #Clock {
         order: 3;
         transform: scale(0.8);
         margin: 0;
     }
-    .QuestionCorrect{
+
+    .QuestionCorrect {
         font-size: 25px;
     }
-    .Questions button{
-    font-size: 25px;
-    min-height: 35px;
-    font-size: 20px
+
+    .Questions button {
+        font-size: 25px;
+        min-height: 35px;
+        font-size: 20px
     }
-    .VisualizeScore{
+
+    .VisualizeScore {
         margin: 0;
         font-size: 20px;
         min-height: 40px;
     }
+
+    .ScorePoints p {
+        font-size: 16px;
+    }
+
+    .DivCheckAndTry button {
+        font-size: 17px;
+        min-height: 55px;
+
+    }
+
+    .ResultsTextIncorrect {
+        font-size: 16px;
+    }
 }
-@keyframes fadein{
-   0%{
-    opacity: 0;
-   }
-   25%{
-    opacity: 0.25;
-   }
-   50%{
-    opacity: 0.50;
-   }
-   75%{
-    opacity: 0.75;
-   }
-   100%{
-    opacity: 1;
-   }
-}
-@keyframes fadeout{
-    0%{
-        opacity: 1;
-       }
-       25%{
-        opacity: 0.75;
-       }
-       50%{
-        opacity: 0.50;
-       }
-       75%{
-        opacity: 0.25;
-       }
-       100%{
+
+@keyframes fadein {
+    0% {
         opacity: 0;
-       }
+    }
+
+    25% {
+        opacity: 0.25;
+    }
+
+    50% {
+        opacity: 0.50;
+    }
+
+    75% {
+        opacity: 0.75;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0.75;
+    }
+
+    50% {
+        opacity: 0.50;
+    }
+
+    75% {
+        opacity: 0.25;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
