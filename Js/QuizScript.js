@@ -199,6 +199,7 @@ function ScoreStrickCount() {
     }
 }
 function BackToMainMenu() {
+    animationRetryFadeout();
     animationBackToMenu();
     setTimeout(() => {
         _BtnStart.disabled = false;
@@ -300,5 +301,5 @@ function animationQuizFadein(){
 
         setTimeout(function () {
             _TableContent.classList.remove('shows');
-        }, 600);
+        }, 500);
     }
