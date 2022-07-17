@@ -25,28 +25,20 @@ let _seconds = document.getElementById('seconds');
 let _ss = document.getElementById('ss');
 let _TableContent = document.querySelector('.AllCountent');
 let _sec_dot = document.querySelector('.Sec_dot');
-let correctScore = askedCount = 0, totalQuestion = 10, QuestionCorrect = 0, difficultOfQuestion = "", PointScores = 0, ScoreStrick = 0;
-var seconds = 60;
-
+let _CategoryOption = document.querySelector('#CategoryOptions')
+let correctScore = askedCount = 0, Category="", totalQuestion = 10, QuestionCorrect = 0, difficultOfQuestion = "", PointScores = 0, ScoreStrick = 0,DifficultyChose = "", dataAmount="";
+var seconds = 60, ResultsVal=0;;
 async function SendApiRequest() {
-    let response;
     try{
-    if (_RdbMixed.checked == true) {
-        response = await fetch('https://opentdb.com/api.php?amount=1');
-    } else if (_RdbEasy.checked == true) {
-        response = await fetch('https://opentdb.com/api.php?amount=1&difficulty=easy');
-    } else if (_RdbMedium.checked == true) {
-        response = await fetch('https://opentdb.com/api.php?amount=1&difficulty=medium');
-    } else {
-        response = await fetch('https://opentdb.com/api.php?amount=1&difficulty=hard');
-    }
+    let response;
+    response = await fetch('https://opentdb.com/api.php?'+ dataAmount +  Category +DifficultyChose  );
     let data = await response.json();
-    _result.innerHTML = "";
-    useApiData(data.results[0]);
-} catch(err){
-    SendApiRequest();
-}
-}
+    useApiData(data);
+    } catch(err) {
+        console.log("API ERRO!")
+        StartTheGame()
+    }
+    }
 function eventListeners() {
     _retryBtn.addEventListener('click', retryQuiz);
     _BtnStart.addEventListener('click', StartTheGame);
@@ -57,40 +49,61 @@ document.addEventListener('DOMContentLoaded', function () {
     _correctScore.textContent = correctScore;
 })
 
-async function StartTheGame() {
+function StartTheGame() {
+    _BtnStart.disabled = true;
     if (_RdbShort.checked == true) {
         totalQuestion = 10;
         _totalQuestion.textContent = 10;
+        dataAmount = "amount=10";
     } else if (_RdbModerate.checked == true) {
         totalQuestion = 20;
+        dataAmount = "amount=20";
         _totalQuestion.textContent = 20;
     } else {
         totalQuestion = 30
         _totalQuestion.textContent = 30;
+        dataAmount = "amount=30";
     }
-    await SendApiRequest();
-          animationStart();
+    if (_RdbMixed.checked == true) {
+        DifficultyChose = "";
+    } else if (_RdbEasy.checked == true) {
+        DifficultyChose = "&difficulty=easy";
+    } else if (_RdbMedium.checked == true) {
+        DifficultyChose = "&difficulty=medium";
+    } else {
+        DifficultyChose = "&difficulty=hard";
+    }
+    if(_CategoryOption.value == "any") {
+        Category = "";
+    } else {
+        Category = ("&category=" + _CategoryOption.value)
+    }
+    SendApiRequest();
+    animationStart();
 }
 function useApiData(data) {
-    animationQuizFadeout();
+      animationQuizFadeout();
+    let saveDate;
+    saveDate = (data.results[ResultsVal])
     let correctAnswer = "";
     _options.disabled = false;
-    correctAnswer = data.correct_answer;
-    difficultOfQuestion = data.difficulty;
-    let incorrectAnswer = data.incorrect_answers;
+    correctAnswer = saveDate.correct_answer;
+    difficultOfQuestion = saveDate.difficulty;
+    let incorrectAnswer = saveDate.incorrect_answers;
     let optionsList = incorrectAnswer;
     optionsList.splice(Math.floor(Math.random() * (incorrectAnswer.length + 1)), 0, correctAnswer);
-    _question.innerHTML = `${data.question}`
-    _difficulty.innerHTML = `<p>Difficulty: ${data.difficulty}</p>`
-    _type.innerHTML = `<p>Category: ${data.category}</p>`
+    _question.innerHTML = `${saveDate.question}`
+    _difficulty.innerHTML = `<p>Difficulty: ${saveDate.difficulty}</p>`
+    _type.innerHTML = `<p>Category: ${saveDate.category}</p>`
     _options.innerHTML = `${optionsList.map((option, index) => `<button type="button" class="Answer"> ${index + 1 + ". "}&nbsp<span>${option}</span></button>`).join('')}`
     _VisualizeScore.innerHTML = `<h2>Points: ${PointScores} </h2>`
+    _result.innerHTML = "";
     animationQuizFadein();
     StartTimer(correctAnswer);
-    selectOption(correctAnswer);
-    
+    selectOption(correctAnswer,data);
+    ResultsVal++;
 }
-function selectOption(correctAnswer) {
+function selectOption(correctAnswer, data) {
     _options.querySelectorAll('.Answer').forEach((option) => {
         option.addEventListener('click', function () {
             if (_options.querySelector('#selected')) {
@@ -98,11 +111,11 @@ function selectOption(correctAnswer) {
                 activeOption.removeAttribute('id');
             }
             option.setAttribute('id', 'selected');
-            checkAnswer(correctAnswer);
+            checkAnswer(correctAnswer,data);
         });
     });
 }
-function checkAnswer(correctAnswer) {
+function checkAnswer(correctAnswer, data) {
     disabledOption();
     StopTimer();
     if (_options.querySelector('#selected')) {
@@ -119,7 +132,7 @@ function checkAnswer(correctAnswer) {
             correctScore++;
             ScoreStrick = 0;
         }
-        checkCount();
+        checkCount(data);
     } else {
         _QuizTable.classList.remove('Onfire');
         _result.innerHTML = `<p class="ResultsTextIncorrect"> <i class = "fas fa-check"></i> incorrect answer!<small><b> Correct Answer: </b> ${correctAnswer}</small> </p>`;
@@ -132,7 +145,7 @@ function HTMLDecode(textString) {
     let doc = new DOMParser().parseFromString(textString, "text/html");
     return doc.documentElement.textContent;
 }
-function checkCount() {
+function checkCount(data) {
     askedCount++;
     if (askedCount == totalQuestion) {
         setTimeout(function () {
@@ -148,7 +161,7 @@ function checkCount() {
             seconds = 60;
             animationQuizFadeout();
             setTimeout(function () {
-               SendApiRequest();
+                useApiData(data);
                setTimeout(function () {
                setCount();
             }, 400)
@@ -188,6 +201,7 @@ function ScoreStrickCount() {
 function BackToMainMenu() {
     animationBackToMenu();
     setTimeout(() => {
+        _BtnStart.disabled = false;
         Reset();
     }, 400);
 }
@@ -200,7 +214,7 @@ function Reset() {
     PointScores = 0;
     QuestionCorrect = 0;
     ScoreStrick = 0;
-
+    ResultsVal=0;
 }
 function disabledOption() {
     _options.querySelectorAll('.Answer').forEach((option) => {
@@ -280,11 +294,11 @@ function animationRetryFadein() {
 function animationQuizFadein(){  
         setTimeout(function () {
             _TableContent.classList.add('shows');
-        }, 700);
+        }, 600);
     }
     function  animationQuizFadeout(){
 
         setTimeout(function () {
             _TableContent.classList.remove('shows');
-        }, 700);
+        }, 600);
     }

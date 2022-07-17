@@ -13,7 +13,19 @@
     --Quizsecond-color: #d580ff;
     --QuizHouver-color: #eabfff;
 }
-
+::-webkit-scrollbar {
+    width: 10px;
+  }
+::-webkit-scrollbar-track {
+    background: var(--Quizmain-color);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--QuizHouver-color);
+    border-radius: 15px ;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--Quizsecond-color);
+  }
 .Nav {
     display: flex;
     align-items: center;
@@ -78,12 +90,14 @@ body {
 input[type=radio] {
     visibility: hidden;
     position: absolute;
+    
 }
 
 label {
     font-size: 25px;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
+    cursor: pointer;
 }
 
 input[type=radio]+label:before {
@@ -492,8 +506,59 @@ label:hover::before {
 .shows{
     opacity: 1;
 }
+select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    z-index: 1;
+    outline: none;
+  }
+#CategoryOptions{
+    background-color:var(--QuizHouver-color);
+    border: 2px solid var(--Quizmain-color);
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: auto 50%;
+    border-radius:10px;
+    color: var(--Quizmain-color);
+    font-size: 18px;
+    padding: 10px 30px 10px 10px;
+    appearance: none;
+    cursor: pointer; 
+    transition: 800ms ease;
+}
+
+#CategoryOptions::after{
+    content: "";
+    width: 0.8em;
+    height: 0.5em;
+    background-color: white;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+#CategoryOptions:hover{
+    background-color:var(--Quizmain-color);
+    color: var(--QuizHouver-color)
+}
+#CategoryOptions:focus{
+    background-color:var(--Quizmain-color);
+    color: var(--QuizHouver-color)
+}
+
+.Optionstrivia{
+    cursor: pointer;
+}
 
 @media only screen and (max-width: 1300px) {
+    ::-webkit-scrollbar{
+        width: 0;
+    }
     .MainCount {
         width: 95%;
     }
