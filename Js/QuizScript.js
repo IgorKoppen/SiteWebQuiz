@@ -26,19 +26,19 @@ let _ss = document.getElementById('ss');
 let _TableContent = document.querySelector('.AllCountent');
 let _sec_dot = document.querySelector('.Sec_dot');
 let _CategoryOption = document.querySelector('#CategoryOptions')
-let correctScore = askedCount = 0, Category="", totalQuestion = 10, QuestionCorrect = 0, difficultOfQuestion = "", PointScores = 0, ScoreStrick = 0,DifficultyChose = "", dataAmount="";
-var seconds = 60, ResultsVal=0;;
+let correctScore = askedCount = 0, Category = "", totalQuestion = 10, QuestionCorrect = 0, difficultOfQuestion = "", PointScores = 0, ScoreStrick = 0, DifficultyChose = "", dataAmount = "";
+var seconds = 60, ResultsVal = 0;;
 async function SendApiRequest() {
-    try{
-    let response;
-    response = await fetch('https://opentdb.com/api.php?'+ dataAmount +  Category +DifficultyChose  );
-    let data = await response.json();
-    useApiData(data);
-    } catch(err) {
+    try {
+        let response;
+        response = await fetch('https://opentdb.com/api.php?' + dataAmount + Category + DifficultyChose);
+        let data = await response.json();
+        useApiData(data);
+    } catch (err) {
         console.log("API ERRO!")
         StartTheGame()
     }
-    }
+}
 function eventListeners() {
     _retryBtn.addEventListener('click', retryQuiz);
     _BtnStart.addEventListener('click', StartTheGame);
@@ -73,7 +73,7 @@ function StartTheGame() {
     } else {
         DifficultyChose = "&difficulty=hard";
     }
-    if(_CategoryOption.value == "any") {
+    if (_CategoryOption.value == "any") {
         Category = "";
     } else {
         Category = ("&category=" + _CategoryOption.value)
@@ -82,7 +82,7 @@ function StartTheGame() {
     animationStart();
 }
 function useApiData(data) {
-      animationQuizFadeout();
+    animationQuizFadeout();
     let saveDate;
     saveDate = (data.results[ResultsVal])
     let correctAnswer = "";
@@ -99,8 +99,8 @@ function useApiData(data) {
     _VisualizeScore.innerHTML = `<h2>Points: ${PointScores} </h2>`
     _result.innerHTML = "";
     animationQuizFadein();
-    StartTimer(correctAnswer);
-    selectOption(correctAnswer,data);
+    StartTimer(correctAnswer, data);
+    selectOption(correctAnswer, data);
     ResultsVal++;
 }
 function selectOption(correctAnswer, data) {
@@ -111,7 +111,7 @@ function selectOption(correctAnswer, data) {
                 activeOption.removeAttribute('id');
             }
             option.setAttribute('id', 'selected');
-            checkAnswer(correctAnswer,data);
+            checkAnswer(correctAnswer, data);
         });
     });
 }
@@ -148,13 +148,13 @@ function HTMLDecode(textString) {
 function checkCount(data) {
     askedCount++;
     if (askedCount == totalQuestion) {
+
         setTimeout(function () {
             StopTimer();
             _Points.innerHTML = `<div class="ScorePoints"><p class="QuestionCorrect">Your correct answers were ${QuestionCorrect}.</p></div> <div class="ScorePoints"> <p class="QuestionCorrect">Your point is ${PointScores}</p></div>`;
             animationRetryFadein();
             setCount();
         }, 400);
-
     } else {
         setTimeout(function () {
             StopTimer();
@@ -162,10 +162,10 @@ function checkCount(data) {
             animationQuizFadeout();
             setTimeout(function () {
                 useApiData(data);
-               setTimeout(function () {
-               setCount();
-            }, 400)
-            }, 1000)
+                setTimeout(function () {
+                    setCount();
+                }, 400)
+            }, 900)
         }, 800);
     }
 }
@@ -215,7 +215,7 @@ function Reset() {
     PointScores = 0;
     QuestionCorrect = 0;
     ScoreStrick = 0;
-    ResultsVal=0;
+    ResultsVal = 0;
 }
 function disabledOption() {
     _options.querySelectorAll('.Answer').forEach((option) => {
@@ -227,7 +227,7 @@ function EnableOption() {
         option.disabled = false;
     });
 }
-function StartTimer(correctAnswer) {
+function StartTimer(correctAnswer, data) {
     _seconds.innerHTML = seconds;
     _sec_dot.style.transform = `rotate(${seconds * 6}deg)`;
     _ss.style.strokeDashoffset = 440 - (430 * seconds) / 60;
@@ -235,8 +235,8 @@ function StartTimer(correctAnswer) {
     timer = setInterval(() => {
         if (seconds == 1) {
             StopTimer();
-            checkAnswer(correctAnswer);
-            checkCount();
+            checkAnswer(correctAnswer, data);
+            checkCount(data);
         }
         seconds--;
         _sec_dot.style.transform = `rotate(${seconds * 6}deg)`;
@@ -254,11 +254,11 @@ async function animationStart() {
         setTimeout(function () {
             _QuizTable.style.display = "block";
             _RuleTable.style.display = "none";
-                setTimeout(function () {
-                    _QuizTable.classList.add('shows');
-                }, 400);
-        },300);
-}, 400);
+            setTimeout(function () {
+                _QuizTable.classList.add('shows');
+            }, 400);
+        }, 300);
+    }, 400);
 }
 function animationBackToMenu() {
     setTimeout(function () {
@@ -266,11 +266,11 @@ function animationBackToMenu() {
         setTimeout(function () {
             _RuleTable.style.display = "block";
             _QuizTable.style.display = "none";
-                setTimeout(function () {
-                    _RuleTable.classList.add('shows');
-                }, 400);
-        },300);
-}, 400);
+            setTimeout(function () {
+                _RuleTable.classList.add('shows');
+            }, 400);
+        }, 300);
+    }, 400);
 }
 function animationRetryFadeout() {
     setTimeout(function () {
@@ -292,14 +292,14 @@ function animationRetryFadein() {
         }, 300);
     }, 300);
 }
-function animationQuizFadein(){  
-        setTimeout(function () {
-            _TableContent.classList.add('shows');
-        }, 600);
-    }
-    function  animationQuizFadeout(){
+function animationQuizFadein() {
+    setTimeout(function () {
+        _TableContent.classList.add('shows');
+    }, 600);
+}
+function animationQuizFadeout() {
 
-        setTimeout(function () {
-            _TableContent.classList.remove('shows');
-        }, 500);
-    }
+    setTimeout(function () {
+        _TableContent.classList.remove('shows');
+    }, 500);
+}

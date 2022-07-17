@@ -379,7 +379,6 @@ label:hover::before {
     width: 100%;
     min-height: 4rem;
     background: var(--nav-color);
-    margin-top: 80px;
     font-size: 16px;
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
@@ -643,44 +642,35 @@ select {
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     .Logo {
         min-width: 200px;
     }
     .QuizInformationDiv{
         margin: 0;
+        gap: 5px;
+        padding: 0;
     }
     .MainCount{
         margin-top: 0;
         margin-bottom: 0;
     }
-    .VisualizeScore{
-        transform: scale(0.8);
-    }
-    .QuizTable {
-        padding: 10px;
-        transform: scale(0.8);
-    }
-    .QuizStart{
-        transform: scale(0.8);
-        
-    }
     .QuizTitleTitleText{
-        font-size: 50px;
+        font-size: 40px;
     }
     .countent {
         padding: 2px;
     }
     
     .countent p {
-        font-size: 21px;
+        font-size: 17px;
         font-weight: 700;
     }
 
     .QuizTitleText {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         font-weight: 700;
-        padding-bottom: 10px;
+        padding: 5px;
     }
     .DivCheckAndTry {
         padding-top: 5px;
@@ -713,27 +703,29 @@ select {
     }
 
     .Rules h1 {
-        font-size: 30px;
+        font-size: 29px;
         font-weight: 700;
     }
-
+  
     .Rules h3 {
-        font-size: 25px;
+        font-size: 24px;
         font-weight: 700;
     }
 
     .Rules p {
-        font-size: 20px;
+        font-size: 17px;
         font-weight: 500;
         text-align: justify;
     }
 
     .DivChose {
-        font-size: 18px;
+        font-size: 15px;
+        padding: 5px;
+        row-gap:5px;
     }
 
     label {
-        font-size: 20px;
+        font-size: 19px;
         font-weight: 700;
     }
 
@@ -746,6 +738,10 @@ select {
     .Points {
         margin-bottom: 20px;
     }
+    .Answer{
+        padding: 5px;
+        margin: 3px;
+    }
     .Answer:hover {
         background-color: inherit;
         color: inherit;
@@ -755,6 +751,7 @@ select {
     #Clock{
         order: 3;
         transform: scale(0.8);
+        margin: 0;
     }
     .QuestionCorrect{
         font-size: 25px;
@@ -762,8 +759,13 @@ select {
     .Questions button{
     font-size: 25px;
     min-height: 35px;
+    font-size: 20px
     }
-
+    .VisualizeScore{
+        margin: 0;
+        font-size: 20px;
+        min-height: 40px;
+    }
 }
 @keyframes fadein{
    0%{
