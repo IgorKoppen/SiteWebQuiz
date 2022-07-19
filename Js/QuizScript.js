@@ -26,6 +26,7 @@ let _ss = document.getElementById('ss');
 let _TableContent = document.querySelector('.AllCountent');
 let _sec_dot = document.querySelector('.Sec_dot');
 let _CategoryOption = document.querySelector('#CategoryOptions')
+let _DivCheckAndTry = document.querySelector('.DivCheckAndTry')
 let correctScore = askedCount = 0, Category = "", totalQuestion = 10, QuestionCorrect = 0, difficultOfQuestion = "", PointScores = 0, ScoreStrick = 0, DifficultyChose = "", dataAmount = "";
 var seconds = 60, ResultsVal = 0;;
 async function SendApiRequest() {
@@ -248,7 +249,7 @@ function StartTimer(correctAnswer, data) {
 function StopTimer() {
     clearInterval(timer);
 }
-async function animationStart() {
+function animationStart() {
     setTimeout(function () {
         _RuleTable.classList.remove('shows');
         setTimeout(function () {
@@ -272,26 +273,6 @@ function animationBackToMenu() {
         }, 300);
     }, 400);
 }
-function animationRetryFadeout() {
-    setTimeout(function () {
-        _retryBtn.style.animation = "fadeout 0.3s";
-        _BackToMenu.style.animation = "fadeout 0.3s";
-        setTimeout(function () {
-            _retryBtn.style.display = "none";
-            _BackToMenu.style.display = "none";
-        }, 300);
-    }, 300);
-}
-function animationRetryFadein() {
-    setTimeout(function () {
-        _retryBtn.style.animation = "fadein 0.3s";
-        _BackToMenu.style.animation = "fadein 0.3s";
-        setTimeout(function () {
-            _retryBtn.style.display = "block";
-            _BackToMenu.style.display = "block";
-        }, 300);
-    }, 300);
-}
 function animationQuizFadein() {
     setTimeout(function () {
         _TableContent.classList.add('shows');
@@ -302,4 +283,24 @@ function animationQuizFadeout() {
     setTimeout(function () {
         _TableContent.classList.remove('shows');
     }, 500);
+}
+function animationRetryFadeout() {
+    setTimeout(function () {
+        _DivCheckAndTry.classList.remove('shows');
+        _Points.classList.remove('shows')
+        setTimeout(function () {
+            _DivCheckAndTry.style.display = "none";
+            _Points.style.display = "none"
+        }, 300);
+    }, 400);
+}
+function animationRetryFadein() {
+    setTimeout(function () {
+        _DivCheckAndTry.style.display = "flex";
+        _Points.style.display = "flex";
+        setTimeout(function () {
+            _DivCheckAndTry.classList.add('shows');
+            _Points.classList.add('shows');
+        }, 300);
+    }, 300);
 }

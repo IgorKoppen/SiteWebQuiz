@@ -14,6 +14,7 @@
     --QuizHouver-color: #eabfff;
 }
 
+/* ScrollBarStyle */
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -31,6 +32,8 @@
     background: var(--Quizsecond-color);
 }
 
+/* ScrollBarStyle */
+/* NavBar */
 .Nav {
     display: flex;
     align-items: center;
@@ -56,10 +59,7 @@
 
 }
 
-.Nav h1 {
-    padding: 10px;
-}
-
+/* NavBar */
 body {
     position: relative;
     width: 100%;
@@ -78,6 +78,7 @@ body {
     height: 100%;
 }
 
+/* QuizRuleTable */
 .QuizStart {
     position: relative;
     width: 100%;
@@ -127,6 +128,47 @@ label:hover::before {
     border: 1px solid var(--Quizsecond-color);
 }
 
+select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    z-index: 1;
+    outline: none;
+}
+
+#CategoryOptions {
+    margin-top: 5px;
+    background-color: var(--QuizHouver-color);
+    border: 2px solid var(--Quizmain-color);
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: auto 50%;
+    border-radius: 10px;
+    color: var(--Quizmain-color);
+    font-size: 18px;
+    padding: 10px 30px 10px 10px;
+    appearance: none;
+    cursor: pointer;
+    transition: 800ms ease;
+}
+
+#CategoryOptions:hover {
+    background-color: var(--Quizmain-color);
+    color: var(--QuizHouver-color)
+}
+
+#CategoryOptions:focus {
+    background-color: var(--Quizmain-color);
+    color: var(--QuizHouver-color)
+}
+
 #Start {
     margin-top: 20px;
     border-radius: 15px;
@@ -162,20 +204,6 @@ label:hover::before {
     width: 100%;
 }
 
-.QuizTable {
-    opacity: 0;
-    display: none;
-    transition: 800ms ease;
-    width: 100%;
-    height: 100%;
-    min-height: 650px;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    font-family: 'Poppins', sans-serif;
-}
-
 .Rules {
     font-family: 'Poppins', sans-serif;
 }
@@ -193,6 +221,23 @@ label:hover::before {
 .Rules p {
     font-size: 20px;
     font-weight: 500;
+}
+
+/* QuizRuleTable */
+
+/* QuizTable */
+.QuizTable {
+    opacity: 0;
+    display: none;
+    transition: 800ms ease;
+    width: 100%;
+    height: 100%;
+    min-height: 650px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .QuizTitle {
@@ -269,7 +314,7 @@ label:hover::before {
 }
 
 .DivCheckAndTry {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     gap: 30px;
@@ -277,7 +322,8 @@ label:hover::before {
     height: 100%;
     padding-top: 40px;
     padding-bottom: 40px;
-
+    transition: 500ms ease;
+    opacity: 0;
 }
 
 .QuizTitleTitleText {
@@ -333,19 +379,10 @@ label:hover::before {
     font-weight: 700;
 }
 
-#BtnBackToMenu {
-    display: none;
-}
-
-#Btnretry {
-    display: none;
-}
-
 .ButtonHover {
     border: 2px solid var(--Quizmain-color);
     background-color: var(--QuizHouver-color);
     color: var(--Quizmain-color);
-    transition: 500ms ease;
     width: 40%;
     min-height: 80px;
     border-radius: 15px;
@@ -366,6 +403,8 @@ label:hover::before {
     text-align: center;
     width: 100%;
     gap: 10px;
+    opacity: 0;
+    transition: 500ms ease-in;
 }
 
 .ScorePoints {
@@ -375,45 +414,7 @@ label:hover::before {
     border: 2px solid var(--Quizsecond-color);
     background: var(--QuizHouver-color);
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
-}
 
-.Footer {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-    min-height: 4rem;
-    background: var(--nav-color);
-    font-size: 16px;
-    font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-    color: #ffffff;
-}
-
-.FooterDivs {
-    padding-right: 15px;
-    padding-top: 15px;
-}
-
-.FooterDivs a {
-    padding-left: 10px;
-}
-
-.Icon {
-    transition: 500ms ease;
-    border-radius: 50%;
-    width: 100%;
-    max-width: 3rem;
-}
-
-.Icon:hover {
-    background-color: #ffffff;
-}
-
-.Onfire {
-    box-shadow: inset 0 0 1em #e25822, 0 0 1em #e25822;
 }
 
 .VisualizeScore {
@@ -509,53 +510,55 @@ label:hover::before {
 
 .AllCountent {
     opacity: 0;
-    transition: 800ms ease;
+    transition: 600ms ease;
+}
+
+.Onfire {
+    box-shadow: inset 0 0 1em #e25822, 0 0 1em #e25822;
 }
 
 .shows {
     opacity: 1;
 }
 
-select {
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    padding: 0 1em 0 0;
-    margin: 0;
+/* QuizTable */
+/* Footer */
+.Footer {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     width: 100%;
-    font-family: inherit;
-    font-size: inherit;
-    cursor: inherit;
-    line-height: inherit;
-    z-index: 1;
-    outline: none;
+    min-height: 4rem;
+    background: var(--nav-color);
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
 }
 
-#CategoryOptions {
-    margin-top: 5px;
-    background-color: var(--QuizHouver-color);
-    border: 2px solid var(--Quizmain-color);
-    background-position: right 10px center;
-    background-repeat: no-repeat;
-    background-size: auto 50%;
-    border-radius: 10px;
-    color: var(--Quizmain-color);
-    font-size: 18px;
-    padding: 10px 30px 10px 10px;
-    appearance: none;
-    cursor: pointer;
-    transition: 800ms ease;
+.FooterDivs {
+    padding-right: 15px;
+    padding-top: 15px;
 }
 
-#CategoryOptions:hover {
-    background-color: var(--Quizmain-color);
-    color: var(--QuizHouver-color)
+.FooterDivs a {
+    padding-left: 10px;
 }
 
-#CategoryOptions:focus {
-    background-color: var(--Quizmain-color);
-    color: var(--QuizHouver-color)
+.Icon {
+    transition: 500ms ease;
+    border-radius: 50%;
+    width: 100%;
+    max-width: 3rem;
 }
+
+.Icon:hover {
+    background-color: #ffffff;
+}
+
+/* Footer */
 
 @media only screen and (max-width: 1300px) {
     ::-webkit-scrollbar {
@@ -627,7 +630,7 @@ select {
     .Questions button {
         font-size: 25px;
         min-height: 40px;
-        margin:7px;
+        margin: 7px;
         padding: 7px;
     }
 
@@ -673,6 +676,7 @@ select {
         font-weight: 500;
         text-align: justify;
     }
+
     label {
         font-size: 20px;
     }
@@ -695,6 +699,7 @@ select {
         gap: 5px;
         padding: 0;
     }
+
     .QuizTitleTitleText {
         font-size: 40px;
     }
@@ -828,49 +833,5 @@ select {
 
     .ResultsTextIncorrect {
         font-size: 16px;
-    }
-}
-
-@keyframes fadein {
-    0% {
-        opacity: 0;
-    }
-
-    25% {
-        opacity: 0.25;
-    }
-
-    50% {
-        opacity: 0.50;
-    }
-
-    75% {
-        opacity: 0.75;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeout {
-    0% {
-        opacity: 1;
-    }
-
-    25% {
-        opacity: 0.75;
-    }
-
-    50% {
-        opacity: 0.50;
-    }
-
-    75% {
-        opacity: 0.25;
-    }
-
-    100% {
-        opacity: 0;
     }
 }
